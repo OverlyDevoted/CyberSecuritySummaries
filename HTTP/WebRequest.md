@@ -281,9 +281,7 @@ Then with a cookie make a post for with a content type header `Content-Type: app
 
 Usually not everybody can do all the CRUD operations for safety reasons. So to use the functions a cookie or authentication header would be provided to allow such operations.
 
-
-
-### READE
+### READ
 
 Sometimes parameters from screen are extracted from URL fragment like in this curl request. Search in this way is usually done with restAPI.
 
