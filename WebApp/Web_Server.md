@@ -21,6 +21,7 @@ Web server responds with HTTP and it has many status codes that it returns, that
 When server receives a request it's then responsible to route it to the destination.
 
 Web servers are utilized to run web applications and they handle HTTP requests.
+
 ## Popular Web Servers
 ### Apache (used by 40% of web apps)
 Usually used with `PHP` and supports `.NET`, `Python`, `Perl` and even OS languages like `Bash` through `CGI`.
@@ -30,3 +31,5 @@ Focuses on serving many concurrent web request with relatively low memory and CP
 ### IIS (15%)
 Is developed and maintained by Microsoft and mainly runs on Microsoft Windows Servers. Used to host apps developed for the Microsoft .NET network. But can host we application developed with other languages (e.g. `PHP`), or host `FTP`. 
 Is optimized for Active Directory integration and includes Windows Auth.
+
+Web servers may provide a vast attack surface so they are high-value target for pentesting.
