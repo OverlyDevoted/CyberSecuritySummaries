@@ -21,7 +21,7 @@ So I tried banner grabbing with `whatweb`
 http://94.237.49.11:52891 [200 OK] Apache[2.4.41], Country[FINLAND][FI], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.41 (Ubuntu)], IP[94.237.49.11], MetaGenerator[WordPress 5.6.1], PoweredBy[--], Script, Title[Getting Started &#8211; Just another WordPress site], UncommonHeaders[link], WordPress[5.6.1]
 ```
 Got response that server is running a WordPress website on a Apache server. 
-Then went to look for exploits on Apache and Wordpress, but did not find any note worthy.
+Then went to look e forxploits on Apache and Wordpress, but did not find any note worthy.
 
 Then I ran
 ```└──╼ $curl -IL 94.237.49.11:52891
