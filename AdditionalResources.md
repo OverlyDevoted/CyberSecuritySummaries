@@ -35,3 +35,6 @@ https://app.hackthebox.com/machines/144
 https://app.hackthebox.com/challenges/5
 https://app.hackthebox.com/challenges/6
 https://app.hackthebox.com/challenges/106
+
+### Outside resources
+https://adventofcode.com/2023
