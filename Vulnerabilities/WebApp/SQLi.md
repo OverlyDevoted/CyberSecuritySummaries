@@ -54,4 +54,48 @@ For example we have an login form and this SQL is made to check if valid user:
 `SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'`
 As we can see here, if there was an used `admin` we could insert `admin'--` and would get logged in as an administrator. 
 
-### Examining 
+### Retrieving data from other database tables (UNION attacks)
+
+In cases where application returns results of an SQL query, it could be possible to inject an `UNION` query which would retrieve data from another table
+`SELECT name, description FROM products WHERE category = 'Gifts'`
+So it would be possible to insert 
+`' UNION SELECT username, password FROM users--`
+and as a result we would retrieve usernames and passwords from the users table
+
+Requirements for UNION attack
+- The individual queries must return the same number of columns. So figure out how many columns are returned.
+- The data types must be compatible between individual queries. Which columns returned from an original query are suitable data type to hold the results from the injected query.
+
+Determining the number of columns:
+One way is to inject `' ORDER BY 1--`, then `' ORDER BY 2` and until the query gives an error, that mean there's not Nth number of column to order by.  
+
+As a result the error would look something like
+`The ORDER BY position number 3 is out of range of the number of items in the select list.`
+Or some generic error or nothing at all.
+
+The other way is to submit an `UNION SELECT` specifying a different number of `NULL` values.
+`' UNION SELECT NULL--` then `' UNION SELECT NULL, NULL--` and so on if the number of nulls does not match the number of columns we will get error
+`All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.`
+This method works without specifying data types because `NULL` converts to all primitive types 
+
+As with `ORDER BY` technique we might get a generic error no error at all. When the number of nulls matches the number of columns, the database return an additional row in the result set, containing null values in each column. The effect on the HTTP response depends on the application logic. If we are lucky, we will see some additional content within the response, such an extra row on an HTML table. Otherwise the null might values trigger an error, such as NullPointerException. In the worst case, the response might look the same as a response caused by a incorrect number of null rendering the technique ineffective.
+
+
+`NOTE - SOME DATABASES COULD USE DIFFERENT SYNTAX`
+On ORACLE every `SELECT` must contain a `FROM`. There's a built-in table in Oracle called `DUAL` which can be used for checking number of columns so an injected string might look like this: 
+`' UNION SELECT NULL FROM DUAL--` (On MySQL the double slash must be followed by a space or alternatively a `#` symbol can be used to identify comments)  
+
+**Finding columns with an useful data-type**
+
+It's possible to identify column data-type by enumerating columns with a specific data-type value. Usually this would be a string as strings are usually most valuable.
+
+So after figuring out column number, now it's time to probe columns with specific data-type value.
+```SQL
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+' UNION SELECT NULL,NULL,'a',NULL--
+' UNION SELECT NULL,NULL,NULL,'a'--
+```
+If the column is not compatible with the data type we would get an error
+`Conversion failed when converting the varchar value 'a' to data type int.`
+If no error is thrown and application's response contains additional content including the injected string value, then the relevant column is suitable for retrieving string data.

@@ -38,3 +38,5 @@ Are free text-fields where any text-based data can be stored. These have multipl
 4. The TDL server holds records for where to find the authoritative server to answer DNS request. The authoritative server is also called nameserver for the domain. So for example nameserver for `tryhackme.com` could be `kip.ns.cloudflare.com` and `uma.ns.cloudflare.com`. So the domain main have multiple name servers for availability and time-to-reach purposes.
 
 5. Authoritative DNS server is the server that is responsible for storing the correct resolution for our domain names. Depending on record type, the DNS record is then sent back to the recursive DNS server, where local copy will be cached for future requests and then relayed to the original client that made the request. DNS records all come with a TTL (Time to live) value, that means that cached DNS records expire and need to be retrieved again from the authoritative DNS server. 
+
+[DNS leak test](https://www.dnsleaktest.com/)
