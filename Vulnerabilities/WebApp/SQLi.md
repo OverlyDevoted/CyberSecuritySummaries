@@ -99,3 +99,22 @@ So after figuring out column number, now it's time to probe columns with specifi
 If the column is not compatible with the data type we would get an error
 `Conversion failed when converting the varchar value 'a' to data type int.`
 If no error is thrown and application's response contains additional content including the injected string value, then the relevant column is suitable for retrieving string data.
+
+### Union attack for retrieving relevant data
+
+Once we figure out the number of columns and figure out data types for the columns we can try to retrieve interesting data.
+
+Suppose that:
+- The original query returns two columns, both of which can hold string data.
+- Injection point is quoted string withing the `WHERE` clause.
+- The database contains a table called `users` with the columns `username` and `password`
+
+So we can inject into `users` table with
+`' UNION SELECT username, password FROM users--`
+But to perform a `UNION` attack there's the need of knowing the table name and it's column names.
+Fortunate for us, most modern database provide ways to retrieve database structure (tables and column names)
+
+### Multiple values within column
+
+SQL has syntax for concatenating multiple columns into one when doing `SELECT`
+`' UNION SELECT username || '~' || password FROM users --`
