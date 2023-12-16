@@ -118,3 +118,24 @@ Fortunate for us, most modern database provide ways to retrieve database structu
 
 SQL has syntax for concatenating multiple columns into one when doing `SELECT`
 `' UNION SELECT username || '~' || password FROM users --`
+
+### Blind SQL injection vulnerabilities
+
+Usually queries if something goes wrong no results are returned to indicate an error. They still can be exploited but techniques are more difficult.
+
+1. Triggering conditional responses
+For example user is tracked with a cookie
+`Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4`
+When a request is processed containing `TrackingId`, the app uses this SQL to determine whether user is know
+`SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'`
+If the query passes check we get response message "Welcome back". Now suppose we send two different requests
+`...xyz' AND '1'='1'` 
+`...xyz' AND '1'='2'`
+- The first one returns true so we should get a `Welcome back` message. 
+- The second one returns false so we could get some other error message which might indicate a vulnerability. 
+
+Suppose there is a table called `users` with columns `username` and `password` and a user called `Administrator`, we could determine tht row's password by checking every letter of the substring. We this we determine letter range:
+`xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm`
+If the servers returns a correct message that could indicate that the password letters matches are somewhere above `m` char. From there we narrow down to the first letter.
+
+[Different databases](https://portswigger.net/web-security/sql-injection/cheat-sheet) use different method name for `substring` 
