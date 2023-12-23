@@ -136,3 +136,5 @@ Web shell benefits:
 - Bypasses firewalls as the server itself is issuing the commands through the OS which was exploited by using a web site 
 - Even if the compromised host is rebooted the exploit file is still there
 Disadvantage of web shell are is that it's not as interactive as the other shells.
+
+Just another [cheat sheet](https://highon.coffee/blog/reverse-shell-cheat-sheet/)

@@ -140,7 +140,7 @@ If the servers returns a correct message that could indicate that the password l
 
 [Different databases](https://portswigger.net/web-security/sql-injection/cheat-sheet) use different method name for `substring` 
 
-## Error-based SQLi
+### Error-based SQLi
 
 It's when errors are used to infer or retrieve sensitive data. Exploit depend on database configuration and types of error we are able to trigger.
 - Inducing the app to return a certain error using a conditional response
@@ -165,6 +165,52 @@ In this example we check if `Username` equals to `Administrator` and if the char
 
 There are different ways to trigger SQL errors withing different SQL database types.
 Refer to this [cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
+### Extracting sensitive data via verbose SQL errors
+
+Misconfigurations sometimes leads to verbose error messages as they can yield useful insight. Consider this error when inserting single quote `'` into id parameter:
+`Unterminated string literal started at position 52 in SQL SELECT * FROM tracking WHERE id = '''. Expected char`
+
+As you can see, we get the exact SQL query that is being executed, which makes it much easier to construct an sql injection.
+Sometimes it's possible to induce an application to generate an error message that contains some of the data that is returned by the query. This effectively turns an otherwise blind SQL injection vulnerability into visible one.
+
+`CAST()` enables us to convert one data type into another. Consider this
+`CAST((SELECT example_column FROM example_table) AS int)`
+and this is the error it outputs
+`ERROR: invalid input syntax for type integer: "Example data"` As you can see the example_column data was leaked as we see `Example data` string was outputted.
+This type of query may also be useful if a character limit prevents you from triggering conditional responses.
+
+### Blind SQLi triggered by time delays
+
+If the applications catches any database error within SQL queries there we won;t any difference in the application's response. That means previous techniques won't work. 
+
+In this situation we can cause time delays if some condition is true. SQL performs queries synchronously by the app, so delaying the query will also delay the HTTP response. Which allows to determine the truth whether the conditions was true or not.
+
+Each database have specific ways to cause a time delay.
+Microsoft SQL Server:
+```sql
+'; IF (1=2) WAITFOR DELAY '0:0:10'--
+```
+```sql
+'; IF (1=1) WAITFOR DELAY '0:0:10'--
+```
+
+- The first will not cause a delay because `1!=2`
+- The second will cause a time delay 
+
+So with this in mind, we can infer useful data, like passwords from previous examples
+`'; IF (SELECT COUNT(Username) FROM Users WHERE Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') = 1 WAITFOR DELAY '0:0:{delay}'--`
+
+### Blind SQLi using out-of-band techniques (OAST)
+
+To mitigate previous exploit, one might make query execution asynchronous. One thread may continue processing user's request, while the other executes the SQL query using the tracking cookie (from previous examples). Query is still vulnerable to the SQLi, but all the other techniques do not work as application's response doesn't depend on the query returning any data, a database error occurring, or on time taken to execute the query.
+
+As the request is still vulnerable to SQLi, it's possible to exploit the vulnerability by triggering an out-of-band network interaction to a system that you control.
+
+Most often DNS network protocol is used for such exploits. Many production networks allow free egress of DNS queries, because they are essential, for the normal operation of production systems.
+
+You create your attacker-side network service, preferably DNS. Which is used to detect when network interactions occur as a result of sending individual payloads to a vulnerable app
+
 ## Identifying SQL databases
 
 When trying to exploit an application for SQLi it's important to know how to determine what database is being used.
@@ -216,3 +262,19 @@ You can google column names, they are usually of string type.
 
 You can list columns by querying all_tab_columns:
 `SELECT * FROM all_tab_columns WHERE table_name = 'USERS'`
+
+##
+SQL Syntactic things to try when injecting
+
+- URL encode special symbols
+- Add conditionals
+- End query with `;` symbol and add queries after that
+- Concatinate strings with `||`. Usually various functions
+
+## Second-order SQLi
+
+First-order SQLi occurs when HTTP request immediately does something with the HTTP request and incorporates user input in an unsafe way that poses sensitive data leaks.
+
+Second-order is when user input is stored for later use. Input is placed somewhere in the database, and when retrieved to be processed the executes malicious SQLi. These attacks are also called stored SQLi.
+
+They usually can occur when the initial request input is safely processed, but in some cases it's possible to bypass checks, then later when the input that was deemed trusty, may still include SQLi, that can lead to data leaks.
