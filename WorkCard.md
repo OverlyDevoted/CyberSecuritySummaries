@@ -2,6 +2,7 @@
 1. CodeAcademy
 Every day from 08:00-16:00
 Make portfolio site a week
+(On week 51 ended HTML CSS and started JS, but did have a big homework that i did not like the results of)
 2. HackTheBox
 On free time do modules or do boxes
 3. RestaAPP
@@ -31,8 +32,16 @@ Just chip at it daily, not much left
 | 2023-12-20 | + | - | - | + | - | - | - | - | - |
 | 2023-12-21 | + | - | - | + | - | - | - | - | - |
 | 2023-12-22 | + | - | - | - | - | - | - | - | - |
-| 2023-12-23 | - | - | - | - | - | - | - | - | - |
+| 2023-12-23 | - | - | - | + | - | - | - | - | - |
 | 2023-12-24 | - | - | - | - | - | - | - | - | - |
+| **Week 52**  | Did not get much done. Week before holidays plus the overwork really got to me, so I need to train and learn to handle the stress. Gonna go hard after new years. |
+| 2023-12-25 | - | - | - | - | - | - | - | - | - |
+| 2023-12-26 | - | - | - | - | - | - | - | - | - |
+| 2023-12-27 | + | - | - | + | - | - | + | - | - |
+| 2023-12-28 | + | - | - | + | - | - | + | - | - |
+| 2023-12-29 | + | - | - | + | - | - | + | - | - |
+| 2023-12-30 | - | - | - | - | - | - | + | - | - |
+| 2023-12-31 | - | - | - | - | - | - | - | - | - |
 
 
 HackTheBox boxes
