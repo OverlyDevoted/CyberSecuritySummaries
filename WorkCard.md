@@ -42,6 +42,31 @@ Just chip at it daily, not much left
 | 2023-12-29 | + | - | - | + | - | - | + | - | - |
 | 2023-12-30 | - | - | - | - | - | - | + | - | - |
 | 2023-12-31 | - | - | - | - | - | - | - | - | - |
+1. CodeAcademy
+Every day from 08:00-16:00
+Make portfolio site a week
+(On week 51 ended HTML CSS and started JS, but did have a big homework that i did not like the results of)
+2. HackTheBox or hackthissite
+On free time do modules or do boxes
+3. PortSwigger
+One lab a day
+4. RestaAPP
+Three times a week for at least 3 hours
+5. PythonBot
+Two times a week for at least 3 hours
+6. LeetCode
+At least 3 a week
+
+| Date | Codecademy | Hacking | PortSwigger | RestaAPP | PythonBot | LeetCode |  
+| **Week 1** |
+| 2024-01-01 | - | - | - | - | - | - | - |
+| 2024-01-02 | + | - | + | - | - | - | + |
+| 2024-01-03 | + | + | - | - | - | - | + |
+| 2024-01-04 | - | - | - | - | - | - | - |
+| 2024-01-05 | - | - | - | - | - | - | - |
+| 2024-01-06 | - | - | - | - | - | - | - |
+| 2024-01-07 | - | - | - | - | - | - | - |
+
 
 
 HackTheBox boxes
