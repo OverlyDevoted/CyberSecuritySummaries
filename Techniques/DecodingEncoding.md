@@ -36,3 +36,9 @@ There's no shorthand command for that, but it can be constructed manually as suc
 There are a hundred of different encodings. So it's important to try identify if you want to learn different encodings.
 
 There's a [tool](https://www.boxentriq.com/code-breaking/cipher-identifier) that can help identify encodings
+
+## MD5
+Generally MD5 was considered a one-way hash. That means original data would be lost upon initial encryption. Though through the years, people have found collisions in the hash, such that sometimes it can be decrypted. 
+### Encode
+`echo <text> | md5sum`
+### [Decode](https://www.md5online.org/md5-decrypt.html)
