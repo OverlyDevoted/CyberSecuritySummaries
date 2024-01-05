@@ -55,4 +55,9 @@ These scenarios illustrate how important it is to have a goal as the difference 
 So with a goal we will overcome obstacles in our way to reach our goals. With this being said, what is your goal by doing your front-end course and doing this cyber-security training?
 
 ```
+Complete some bug bounties to fund my learning - most notably:
+1. Burp Suite PRO
+2. HackTheBox subscription
+3. LeetCode subscription
+
 ``` 

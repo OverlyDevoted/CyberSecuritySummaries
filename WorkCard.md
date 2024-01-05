@@ -58,7 +58,8 @@ Two times a week for at least 3 hours
 At least 3 a week
 
 | Date | Codecademy | Hacking | PortSwigger | RestaAPP | PythonBot | LeetCode |  
-| **Week 1** |
+| - | - | - | - | - | - | - |
+| **Week 1** | 
 | 2024-01-01 | - | - | - | - | - | - |
 | 2024-01-02 | + | - | + | - | - | + |
 | 2024-01-03 | + | + | - | - | - | + |
