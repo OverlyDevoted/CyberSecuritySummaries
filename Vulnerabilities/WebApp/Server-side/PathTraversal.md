@@ -17,6 +17,22 @@ Some applications might not even have any protection for path traversal attacks.
 
 On unix-based OS `/etc/passwd` is a standard file containing details of users that are registered on the server. Of course, other sensitive files could be found and retrieved this way.
 On Windows both `\..` and `/..` are valid traversal sequences, so an equivalent file that has users listed is `/windows/win.ini`. 
+
 ### Challenge *File path traversal, simple case*
 Go to any category, edit HTML, click on `Select Element`, select the image, copy image source and traverse to the `/etc/psw` by inserting the URL into the browser. It was something similar to this: 
 `https://<server>/loadImage?filename=../../../etc/psw`
+
+Any user input that is placed into file paths would probably have defenses against path traversal attacks. Though these can be often bypassed. 
+
+Application might block or strip path traversal symbols, but it might be possible to bypass these defenses. 
+
+As you know, in linux you can enter `cd /etc` and it would directly get you to that folder. So in some instances it would be possible to do that in some websites too. Just `filename=/etc/passwd`
+Or there's logic flaws in how escape sequences are removed, for example website might remove all instances off `../` in a string, but if we encoded our string like this `...//` then the middle `../` gets stripped and then we are left with a `../` which then is used to path traverse.
+
+### Challenge *File path traversal sequences stripped with superfluous URL-decoder*
+How to traverse traversal sequences stripped with superfluous URL-decoder
+The sequence gets decoded and stripped
+App blocks input that contains traversal sequences
+Then URL-decoding is performed before using input
+
+So the only thing that was needed was to double url-encode the `/` with `%252f` and send this parameter payload `..%252f..%252f..%252fetc%252fpasswd`

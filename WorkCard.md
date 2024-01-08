@@ -1,4 +1,7 @@
+# Work Card
+
 ### Weekly challenges
+
 1. CodeAcademy
 Every day from 08:00-16:00
 Make portfolio site a week
@@ -56,6 +59,13 @@ Three times a week for at least 3 hours
 Two times a week for at least 3 hours
 6. LeetCode
 At least 3 a week
+<hr>
+
+## What do the markings mean
+
+- `-` - means did not work
+- `+-` - tried but did not get any meaningful results
+- `+` - solved some problems, learned new concepts
 
 | Date | Codecademy | Hacking | PortSwigger | RestaAPP | PythonBot | LeetCode |  
 | - | - | - | - | - | - | - |
@@ -64,13 +74,23 @@ At least 3 a week
 | 2024-01-02 | + | - | + | - | - | + |
 | 2024-01-03 | + | + | - | - | - | + |
 | 2024-01-04 | + | + | + | - | - | + |
-| 2024-01-05 | - | - | - | - | - | - |
-| 2024-01-06 | - | - | - | - | - | - |
-| 2024-01-07 | - | - | - | - | - | - |
+| 2024-01-05 | + | - | + | - | - | + |
+| 2024-01-06 | - | - | + | - | - | + |
+| 2024-01-07 | - | + | +- | - | - | + |
+| **Week 2** Did a lot of LeetCode. Slowly learning all other things. I think the progress is sufficient | Learned more about Javascript concepts like spread operators, how to work with arrays and utilize JavaScript functions | Did not cover many hacking topics apart from Javascript Deobfuscation, but went over my goals and aspirations for doing all of this | Finished authentication module and path traversal one | - | - | Finished JavaScript30 and started Top 150 Interview Questions | 
+| 2024-01-08 | + | - | + | - | - | + |
+| 2024-01-09 | - | - | - | - | - | - |
+| 2024-01-10 | - | - | - | - | - | - |
+| 2024-01-11 | - | - | - | - | - | - |
+| 2024-01-12 | - | - | - | - | - | - |
+| 2024-01-13 | - | - | - | - | - | - |
+| 2024-01-14 | - | - | - | - | - | - |
 
 
 
-HackTheBox boxes
+
+## HackTheBox boxes
+
 - [ ] Root a Retired Easy Box
 - [ ] Root a Retired Medium Box
 - [ ] Root an Active Box

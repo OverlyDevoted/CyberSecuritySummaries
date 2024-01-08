@@ -55,9 +55,79 @@ These scenarios illustrate how important it is to have a goal as the difference 
 So with a goal we will overcome obstacles in our way to reach our goals. With this being said, what is your goal by doing your front-end course and doing this cyber-security training?
 
 ```
-Complete some bug bounties to fund my learning - most notably:
+These two goals converge much later in the learning process. But the idea with this, that both should expand my knowledge of how computers, internet work and the gained expertise should supplement one another as they are closely related. As I'm learning web app security, I'll know how to make a more secure web app and as I'm learning how to make web apps, I'll know where to look for security flaws. The main goal is to expand my knowledge and improve as a human being. The second goal is to get a job as either a web app developer or web app security specialists. And the optional goal is to be able to do contract work, such as bug bounty, freelance web app dev as with that I'll be able to earn extra money for upgrading my setup, buying tools, learning material subscriptions or courses. For now, I'd like to complete some bug bounties to fund my learning and buy these things:
 1. Burp Suite PRO
 2. HackTheBox subscription
 3. LeetCode subscription
-
+These will let me further my knowledge and possibly open the opportunity for me to get some certifications.
+Additionally i'd really like to know how to hack other systems and defend them, as this will help me to start my own applications (web apps, games, infrastructures ) and make them more secure.
 ``` 
+
+Learning pyramid:
+Different models of learning usually lead to different results. Results of learning is how well we remember and understand the topic. Also it goes deeper, as we are better at some topic we would not only be able to recall it and tell it to someone else, but we would also be able to practically apply it, test it in different environments and achieve measurable results. The highest level of understanding of a to 
+1. By listening to a lecture we retain about 5%
+2. By reading we retain about 10%
+3. By watching a audiovisual we retain about 20%
+4. By watching a demonstration we retain about 30%
+5. Engaging in a discussion about a topic we retain about 50%
+6. By practicing concepts we retain about 75%
+7. By explaining it to other we retain about 90%    
+But this pyramid concept has some criticisms as the research paper where the pyramid is described, does not provide a very detail methodology applied, it's quality, parameters the methodology was tested on like: time, population size, for the research and thus the conclusions and the model itself are deemed as not very trustworthy. 
+
+Document how did you research and document the `Learning Pyramid` 
+```
+I opened the recommended wiki page and just tried to explain the concept in my own words. Now looking at the section of the module I realize how lacking my notes were. In their overview they described that these learning methods have a clear pattern of passive and active learning methods. With active learning methods we retain much more information and such we should try and concentrate on doing active learning, when we want to get as much as possible of the experience we are trying to learn.
+```
+
+Ok, find information about creativity and problem-solving, then create an overview and find a way to think more creatively.
+
+```
+Usually applying creativity to problem-solving involves employing a solution different from conventional way of thinking. So while the conventional solution may suffice, creative problem-solving enables us to find solutions that step into another dimension of depth, to the point where our solutions may elevate the efficiency and practicality of said problems. 
+So how can one try find creative solutions to problems:
+1. Brainstorming. This generates many ideas on how to solve a problem. Many of then may fail, but considering or trying each idea is a great way to find if something sticks or not. 
+2. Dividing the problem. Trying to list the intuition for solving a problem, what should be done to achieve a result. When we are trying to solve a problem we have a starting and end point. Often we have a broad-scope problem which end result does not describe the means, so dividing the problem into smaller problems can helps us identify how to solve each step to get to the final result.
+When a problem does not get solved, we should always think what have we not tried, that at least is a way for me to find new things to try to maybe discover solutions. But that feels brute-forcey sometimes. But how do we find solutions which are outside our scope of expertise? Is it even possible? Often when trying to solve PortSwigger labs I've found myself stuck and resorting to solutions tab. After reading solutions I almost every time was left with a feeling that I could've figured it out. So what is keeping it me from doing it? Is it not being able to bear the uncomfortability of my own incompetency or is it just unavoidable that we cannot solve some issues outside our knowledge?
+```
+
+Our brain makes up our mind, the very being that we identify with.
+
+Fear, is a pressure that arises from our complexes, which would not be existent if one was confident in his abilities. Being confident let us our brain to make associations and connections with the things we have conceived. 
+Sometimes fear is irrational and not real. But feeling fear while looking at a computer screen is irrational. Getting better involves not giving up, and letting go of fear as it only stands in the way of learning.
+
+Remember the goal we have created before. It's a point in a future we aspire to be at. An endpoint of a process. For that process to lead to the goal, we must ask ourselves is this activity is bringing me closer to the goal?
+
+The results of a meta-analysis of over 200 studies with more than 40,000 participants show that over 90 percent of people are significantly more successful in achieving their dreams by **setting challenging and specific goals.**
+
+Read an penetration audit report and get an overview of the following:
+1. What topics have been covered?
+2. How are they structured?
+3. How are they presented?
+
+```
+The document I have chosen to write an overview about is [RandomX Security Audit](https://pentestreports.com/reports/Kudelski-Security/Report-Kudelski-201907022.html). The tested application is a PoW (proof-of-work) software that attempts to maximize the advantage of miners equipped with mainstream CPUs. PoW is a cryptographic proof in which the prover proves to verifiers that some amount of computational effort has been expended. With that  verifiers can easily confirm expenditure with minimal effort on their part. It's foundational component of cryptocurrencies. 
+1. The paper focuses on delivering an audit report that lists out what are the security goal for the software, the methodology for checking for any security related issues, the overview of uncovered possible security issues.
+2. In the first section *Summary* and overview of what this document is is given. What was tested, how was it tested according to security goals and a result summary.
+Later a broader description of the application is given, it's purpose and how it works and it's features and security goals were formulated based on it's features.
+And at last observations were given on security issues and where and how to find specific reports to them. 
+3. The whole audit is presented in a formally formatted pdf document, which is structured in different unique topics. The document describes itself, its goals and what has been done to achieve those goals.   
+```
+
+Overviews are like maps, they tell us how to reach some type of goal.
+*The point of maximum danger is the point of minimum fear.*
+*Got places the most beautiful things on the other side of terror*
+
+The most important and most difficult thing in any situation is not the search for the right answer, but the search for the right question
+
+Write down 3-5 situations from your life and write down one question for each of them?
+1. Cannot find how to path traverse through a superfluous URL-decoder
+Q: Is there a way to make URL-decoder decode and then still not filter out decoded traversal sequences 
+2. Do not know if I will be able to earn money doing IT
+Q: What can you be making that people need?
+3. Do not know what to cook for dinner
+Q: What you is tasty?
+4. I know I have to do these things to get closer to my goal, but I would rather just do something to stay in my comfort zone
+Q: Maybe a little rest will help you get on track later?
+5. I have anxiety talking to these people and I do not want to talk to them
+Q: Maybe just not talk to them
+
+There are no 'good' or 'bad' questions
