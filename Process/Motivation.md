@@ -129,5 +129,38 @@ Q: What you is tasty?
 Q: Maybe a little rest will help you get on track later?
 5. I have anxiety talking to these people and I do not want to talk to them
 Q: Maybe just not talk to them
-
 There are no 'good' or 'bad' questions
+
+Here is a `Relationship-oriented-questioning model`
+What our questions have in common? relationship between individual components.
+
+![Questioning](./../Images/Questioning1.png)
+
+| Components | Description |
+| - | - |
+| Your position | This describes the position we are in and our view |
+| The Object | The object is the core element of the question. The main component of our sentence takes the meaning out our question. |
+| Known | The information that is know to us |
+| Unknown | The information that is not known to us |
+| Other Position(s) | This component describes the position of other persons. |
+
+These are the components that are needed to ask any question correctly. So we ask any question and break it down using this `ROQ` (relationship-oriented-questioning) model. We should consider:
+
+1. We need to find out the core element of the question and insert it as object
+2. We must have at least two components defined in the model. More than two components are optional
+
+We always have one component - US
+
+Example question:
+`What are all the method available to us to remotely access Windows operating system?`
+
+![Questioning 2](./../Images/questioning2.bmp)
+
+
+```
+I've come across a very interesting analogy. It's from a streamer called Dantes and he told how it feels to be a streamer for him. For him it felt like sitting in a garage and tinkering with tools, working on a little project. He is working on a little car, that he one day hopes to finish. As a result of that little car he hopes that it would help him get to his friends a little quicker from time to time. But as he works on his little car, and to his surprise he finishes it. Now he can go to his friends. After everything, the itch remains and now he wants to build a proper car. After he builds a car, he tries to build a plane, then a rocket, then a spaceship and every day when he is working on it he always has one question in mind - how far can it take me? Remember when he was working on the little car he wondered if it would take him to his friends, then he wondered if the car could take him to other cities, then if the plane could take him to other countries and so on until he reached the point where he is wondering if it could take him to another universe.
+```
+
+Once we know the goal to which we are attracted, we can use various principles, such as the Pareto Principle or Occam's Razor, to develop our talents and skills and make our decisions to pass the obstacles that fall across our path by asking the right questions.
+
+Asking the right questions may change the answer we receive, which can help us achieve our goals. The goal of the question, it determines our approach  

@@ -79,7 +79,7 @@ At least 3 a week
 | 2024-01-07 | - | + | +- | - | - | + |
 | **Week 2** Did a lot of LeetCode. Slowly learning all other things. I think the progress is sufficient | Learned more about Javascript concepts like spread operators, how to work with arrays and utilize JavaScript functions | Did not cover many hacking topics apart from Javascript Deobfuscation, but went over my goals and aspirations for doing all of this | Finished authentication module and path traversal one | - | - | Finished JavaScript30 and started Top 150 Interview Questions | 
 | 2024-01-08 | + | - | + | - | - | + |
-| 2024-01-09 | - | - | - | - | - | - |
+| 2024-01-09 | + | +- | - | - | - | + |
 | 2024-01-10 | - | - | - | - | - | - |
 | 2024-01-11 | - | - | - | - | - | - |
 | 2024-01-12 | - | - | - | - | - | - |
@@ -101,3 +101,7 @@ At least 3 a week
 - [ ] Complete A Track
 - [ ] Win a Hack The Box Battlegrounds Battle
 - [ ] Complete A Pro Lab
+
+## Certification route wip
+
+CPTS OSCP Security+
