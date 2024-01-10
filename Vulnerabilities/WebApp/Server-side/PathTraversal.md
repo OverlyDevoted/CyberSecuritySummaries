@@ -36,3 +36,33 @@ App blocks input that contains traversal sequences
 Then URL-decoding is performed before using input
 
 So the only thing that was needed was to double url-encode the `/` with `%252f` and send this parameter payload `..%252f..%252f..%252fetc%252fpasswd`
+
+### Challenge *File path traversal, traversal sequences blocked with absolute path bypass*
+In this challenge we could traverse by specifying an absolute path
+
+### Challenge *File path traversal, traversal sequences stripped non-recursively*
+Traversal sequences are stripped non-recursively so we can just input nested traversal sequences similar to this `....//` - the inner sequence gets stripped and as a result normal sequence is left and we can traverse.
+
+### Challenge *File path traversal, validation of start of path*
+A file may need to be finished or started a certain way. In this case application checks if the input string starts with a `/var/www/images`. That can be bypassed with adding path traversal sequences. As a results we get this string: `/var/www/images/../../../etc/passwd`
+
+### Challenge *File path traversal, validation of file extension with null byte bypass*
+In this example the application checks if the input needs to ends with a file extension string `.png`. To exploit this we can add a null byte which effectively terminates the file path before the required extension. So
+`../../../etc/passwd%00.png`
+
+## Preventing Path Traversal attacks
+
+The most effective way is to avoid passing user supplied input into filesystem API altogether. Many applications that do, can be rewritten to use more static ways of retrieving needed data.
+
+If user input cannot be avoided, these were the recommendations from PortSwigger:
+
+1. Validating user input before processing it. Ideally the input should be checked against a whitelist of possible values. If that is not possible, then it should be checked if the input contains only alphanumerical symbols.
+2. After validating, append the input to the base directory, and then use the filesystem API to canonicalize (normalize) the path and check if the canonicalized value starts with the base directory.
+
+Code for canonicalizing validated input:
+
+```java
+File file = new File(BASE_DIRECTORY, userInput);
+if (file.getCanonicalPath().startsWith(BASE_DIRECTORY)) {
+    // process file
+}```
