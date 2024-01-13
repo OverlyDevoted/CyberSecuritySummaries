@@ -80,11 +80,19 @@ At least 3 a week
 | **Week 2** Did a lot of LeetCode. Slowly learning all other things. I think the progress is sufficient | Learned more about Javascript concepts like spread operators, how to work with arrays and utilize JavaScript functions | Did not cover many hacking topics apart from Javascript Deobfuscation, but went over my goals and aspirations for doing all of this | Finished authentication module and path traversal one | - | - | Finished JavaScript30 and started Top 150 Interview Questions | 
 | 2024-01-08 | + | - | + | - | - | + |
 | 2024-01-09 | + | +- | - | - | - | + |
-| 2024-01-10 | - | - | - | - | - | - |
-| 2024-01-11 | - | - | - | - | - | - |
-| 2024-01-12 | - | - | - | - | - | - |
-| 2024-01-13 | - | - | - | - | - | - |
+| 2024-01-10 | + | - | + | - | Should fix bot | + |
+| 2024-01-11 | + | - | - | - | + (maybe fixed idk if it still asks for password) | + |
+| 2024-01-12 | + Helped other people with understanding for loops :D | - | - | - | - | + |
+| 2024-01-13 | - | +- | - | - | - | + |
 | 2024-01-14 | - | - | - | - | - | - |
+| **Week 3** |
+| 2024-01-15 | - | - | - | - | - | - |
+| 2024-01-16 | - | - | - | - | - | - |
+| 2024-01-17 | - | - | - | - | - | - |
+| 2024-01-18 | - | - | - | - | - | - |
+| 2024-01-19 | - | - | - | - | - | - |
+| 2024-01-20 | - | - | - | - | - | - |
+| 2024-01-21 | - | - | - | - | - | - |
 
 
 

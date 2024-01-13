@@ -154,8 +154,23 @@ We always have one component - US
 Example question:
 `What are all the method available to us to remotely access Windows operating system?`
 
+Let's break it down the question into it's components
+
 ![Questioning 2](./../Images/questioning2.bmp)
 
+| Component | Question Part | Description | 
+| - | - | - |
+| Your position | | This describes the position we are in and our view |
+| The Object |Remotely accessing Windows | The object is the core element of the question. The main component of our sentence takes the meaning out our question. |
+| Known | Methods | The information that is know to us |
+| Unknown | Methods | The information that is not known to us |
+| Other Position(s) | | This component describes the position of other persons. |
+
+Based on the questions parts assigned to the components, we have to establish in which relationship they act among each other. 
+Let's look at the graphic and let's inspect the line connecting the components.
+
+- Solid Line: Connection - How is X connected to Y
+- Dashed Line: Affection - How does Y influence the state of X
 
 ```
 I've come across a very interesting analogy. It's from a streamer called Dantes and he told how it feels to be a streamer for him. For him it felt like sitting in a garage and tinkering with tools, working on a little project. He is working on a little car, that he one day hopes to finish. As a result of that little car he hopes that it would help him get to his friends a little quicker from time to time. But as he works on his little car, and to his surprise he finishes it. Now he can go to his friends. After everything, the itch remains and now he wants to build a proper car. After he builds a car, he tries to build a plane, then a rocket, then a spaceship and every day when he is working on it he always has one question in mind - how far can it take me? Remember when he was working on the little car he wondered if it would take him to his friends, then he wondered if the car could take him to other cities, then if the plane could take him to other countries and so on until he reached the point where he is wondering if it could take him to another universe.
