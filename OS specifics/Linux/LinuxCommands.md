@@ -43,27 +43,40 @@ First thing you do when you reverse shell is run `whoami` to set a basis.
 
 For kernel exploits you should run `uname -r`. 
 
-## Commands
+
+## System/hardware commands
 
 | Command | Description |
 | - | - |
-| `sleep` | With sleep you can make the command line sleep for a certain amount of time before executing any command. |
-| `ping` | With ping you can ping a server and also cause time delays for the executing server. For example this could be useful in Blind command injection attacks as you could make server processing the request make longer to respond because it is pinging itself or some other IP. | 
-| `whoami` | Displays current username |
-| `id` | Returns users identity |
-| `hostname` | Sets or prints the name of current host system |
-| `uname` | Prints out the basic information about the OS and hardware |
-| `pwd` | Outputs the working directory |
-| `ifconfig` | Used to assign or to view an address to a network interface and/or configure network interface parameters |
-| `ip` | Utility to show or manipulate routing, network devices and tunnels |
-| `netstat` | Shows network status |
-| `ss` | Tool to investigate sockets |
-| `ps` | Shows process status |
-| `who` | Displays who is logged in |
 | `env` | Prints environment or sets and executes command |
 | `lsblk` | Lists block devices |
 | `lsusb` | Lists USB devices |
 | `lsof` | Lists opened files |
 | `lspci` | Lists PCI devices |
+| `uname` | Prints out the basic information about the OS and hardware |
+| `ps` | Shows process status |
+| `sleep` | With sleep you can make the command line sleep for a certain amount of time before executing any command. |
 
-## Navigation
+## User related commands
+
+| Command | Description |
+| - | - |
+| `who` | Displays who is logged in |
+| `whoami` | Displays current username |
+| `id` | Returns users identity |
+| `hostname` | Sets or prints the name of current host system |
+
+## Networking Commands
+
+| Command | Description |
+| - | - |
+| `ifconfig` | Used to assign or to view an address to a network interface and/or configure network interface parameters |
+| `ip` | Utility to show or manipulate routing, network devices and tunnels |
+| `netstat` | Shows network status |
+| `ping` | With ping you can ping a server and also cause time delays for the executing server. For example this could be useful in Blind command injection attacks as you could make server processing the request make longer to respond because it is pinging itself or some other IP. | 
+| `ss` | Tool to investigate sockets |
+
+## Navigation Commands
+| Command | Description |
+| - | - |
+| `pwd` | Outputs the working directory |
