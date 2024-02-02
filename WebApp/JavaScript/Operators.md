@@ -1,0 +1,2 @@
+- Double inversion. `!!val` returns `true` when a `val` is truthy, otherwise `false`. Useful for converting values into true or false
+- Nullish coalescing `val1 ?? val2` returns `val1` if `val2` is `null` and vise versa. If both are true returns left-side.
