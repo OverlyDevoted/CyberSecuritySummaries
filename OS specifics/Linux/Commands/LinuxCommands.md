@@ -33,6 +33,7 @@ visudo (8)           - edit the sudoers file
 ```
 
 [A web dictionary for Linux commands](https://explainshell.com/)
+
 ## Tips 
 
 You can concatenate multiple commands into one call by using `&` symbol
@@ -80,3 +81,37 @@ For kernel exploits you should run `uname -r`.
 | Command | Description |
 | - | - |
 | `pwd` | Outputs the working directory |
+| `ls` | Lists out folder contents |
+
+
+### `ls`
+
+With `ls` program, we can list out the contents of any folder we want. If we specify a path, the contents of that folder path will be outputted, otherwise, the contents of the folder we are currently at.
+
+| Flags | Description |
+| - | - |
+| `-l` | This flag displays additional information about folder files. Permissions, number of hard links, owner, group owner, size of the file, date of creation, name |
+| `-a` | Lists out hidden files |
+
+### `cd`
+
+Used to navigate through folders.
+
+`cd /file/path`
+
+We can navigate relatively from where we are in the system, and absolutely.
+
+Absolute
+`cd /var/www/`
+
+Relative (from /home/some-user)
+`cd ../../var/www`
+
+`cd -` used to jump back to last `cd`
+
+Tab can be used for auto-completion.
+
+### `clear`
+
+Clears the shell of previous outputs or `CTRL` + `L`
+`CTRL` + `R` for accessing command history.
