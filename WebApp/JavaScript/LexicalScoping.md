@@ -32,6 +32,21 @@ Enclosing scope is a scope that surrounds and contains another scope. It refers 
 
 Word *lexical* refers to the fact that the lexical scoping uses the location where the variable is declared within the source code to determine where that variable is available.
 
+The best way lexical environment capturing for when closures are formed is explained with this for loop.
+
+```javascript
+    for (var i = 0; i < 3; i++) {
+        const log = () =>{
+            console.log(i);
+        }
+        setTimeout(log, 100);
+    }
+```
+
+What will the function output? Well, because of lexical environment capturing at the time of defining `log` function `i` is a global context variable because it's defined with keyword `var`. So all logs would output 3.
+
+But what if we changed `i` scope to local scope with `let` keyword. Then the `i` would no longer be global, but rather local at the time of `log` function definition. So each `log` function get their own lexical environment with a distinctive `i`. So each log in a timeout appropriately prints out their `i`.
+
 ### `var`
 
 `var` variables are either function-scoped or globally scoped.

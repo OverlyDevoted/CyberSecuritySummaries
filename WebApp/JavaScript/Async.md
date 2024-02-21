@@ -1,4 +1,4 @@
-JavaScript has an mechanism to perform operations pseudo-asynchronously. JavaScript still runs a single-threaded engine, but it simulates asynchronicity by ordering operations so that they are non-blocking and can be performed later at any time of the applications runtime.
+JavaScript has an mechanism to perform operations pseudo-asynchronously. JavaScript still is a single-threaded engine, but it simulates asynchronicity by ordering operations so that they are non-blocking and can be performed later at any time of the applications runtime.
 
 ## Asynchronicity using callbacks 
 Callbacks are functions that are called when some criteria is met *Like a HTTP response is received from another web server*. 

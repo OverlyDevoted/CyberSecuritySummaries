@@ -82,3 +82,117 @@ Pros:
 Poly(Many)morph(forms)ism let's us make changes to the base object structure when creating new structures from base, so that it uniquely behaves on same methods. 
 
 This let's us reduce type checking
+
+## Examples
+
+### Encapsulation 
+
+```javascript
+class Car {
+    constructor(brand, model, mileage) {
+        this.brand = brand;
+        this.model = model;
+        this.mileage = mileage;
+        this.curSpeed = 0;
+    }
+    accelerate() {
+        this.curSpeed+=10;
+    }
+    decelerate() {
+        this.curSpeed = Math.max(this.curSpeed-10, 0);
+    }
+    getSpeed() {
+        return this.curSpeed;
+    }
+}
+
+const myCar = new Car("BMW", "e36", 210000);
+myCar.accelerate();
+myCar.accelerate();
+myCar.accelerate();
+myCar.decelerate();
+console.log(myCar.getSpeed());
+```
+
+### Inheritance 
+
+```javascript
+class Animal {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    walk() {
+        console.log(`${this.name} walked`)    
+    }
+    speak() {
+        console.log(`${this.name} made a sound`)    
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log(`${this.name} barks`);
+    }
+}
+
+const myDog = new Dog("Zara", 6);
+myDog.bark();
+```
+
+### Polymorphism
+
+```javascript
+class Shape {
+    constructor (width, height, shape) }
+        this.width = width;
+        this.height = height;
+        this.shape = shape;
+    {
+    getArea() {
+        console.log("Shape area");
+    }
+}
+class Square extends Shape {
+    getArea() {
+        console.log("Square area");
+    }
+}
+class Circle extends Shape {
+    getArea() {
+        console.log("Circle area");
+    }
+}
+
+const shapes = [new Square(300, 200, "red"), new Circle(300, 200, "yellow")];
+shapes.forEach(shape => shape.getArea());
+```
+
+### Abstraction
+
+```javascript
+class TV {
+    constructor(device) {
+        this.device = device;
+    }
+    turnOn() {
+        this.device.turnOn()
+    }
+    turnOff() {
+        this.device.turnOff()
+    }
+}
+class Remote {
+    constructor() {
+    }
+    turnOn() {
+        console.log("Turn on command");
+    }
+    turnOff() {
+        console.log("Turn off command");
+    }
+}
+
+const tv = new TV(new Remote())
+tv.turnOff();
+```

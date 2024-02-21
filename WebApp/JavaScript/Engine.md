@@ -2,7 +2,9 @@ Notes on JavaScript engines where taken referencing [this video](https://www.you
 
 # High-level JavaScript overview 
 
-JavaScript is an interpreted language, that means it parses code at runtime, interprets it, and does functions.
+JavaScript is a dynamically interpreted language, that means it parses code at runtime, interprets it, and does functions.
+
+It may parse variables that don't exist or work with object of unknown shape. But we won't know until event loop reaches the point of error (or syntax error). 
 
 Runtimes that run JavaScript interpreters are called engines. More popular engines are 
 
