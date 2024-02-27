@@ -32,7 +32,7 @@ Enclosing scope is a scope that surrounds and contains another scope. It refers 
 
 Word *lexical* refers to the fact that the lexical scoping uses the location where the variable is declared within the source code to determine where that variable is available.
 
-The best way lexical environment capturing for when closures are formed is explained with this for loop.
+The best way lexical environment capturing for forming closures are explained with this for loop.
 
 ```javascript
     for (var i = 0; i < 3; i++) {
