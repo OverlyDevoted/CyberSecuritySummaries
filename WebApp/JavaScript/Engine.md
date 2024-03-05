@@ -1,4 +1,4 @@
-Notes on JavaScript engines where taken referencing [this video](https://www.youtube.com/watch?v=xckH5s3UuX4)
+Notes on JavaScript engine where taken referencing [this video](https://www.youtube.com/watch?v=xckH5s3UuX4)
 
 # High-level JavaScript overview 
 
