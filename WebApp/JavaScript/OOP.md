@@ -52,7 +52,7 @@ With *inheritance* we bundle commonality, which breaks when we find exceptions f
 
 Let's convert our previous example to be composed.
 
-We remove abstract methods load/save from base class image. It represents an image in-memory. Our file specific classes no longer have a need to inherit from image. They implement their own load/save as class methods, but we need in-memory image to perform load/save operations. Previously it had no problem with that as the class inherited the in-memory Image class, but now it's separated. File specific image classes now would need to require an Image class object for the load/save methods as a parameter.
+We remove abstract methods load/save from base class image. Now, it represents an image in-memory. Our file specific classes no longer have a need to inherit from image. They implement their own load/save as class methods, but we need in-memory image to perform load/save operations. Previously it had no problem with that as the class inherited the in-memory Image class, but now it's separated. File specific image classes now would need to require an Image class object for the load/save methods as a parameter.
 
 Now the image draw class, does not need to inherit from an image, it just receives an in-memory image it modifies. Now we can create an image with Image class by loading with PNG class, then draw on that image object with ImageDraw class and then save to JPG with JPGImage class. 
 

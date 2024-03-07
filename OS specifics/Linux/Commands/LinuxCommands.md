@@ -115,3 +115,92 @@ Tab can be used for auto-completion.
 
 Clears the shell of previous outputs or `CTRL` + `L`
 `CTRL` + `R` for accessing command history.
+
+### dpgk
+
+You can check all packages on the machine by running command
+
+`dpkg -l`
+
+To check for installed packages you can run
+
+`dpkg -l | grep ii`
+
+### `more` and `less`
+
+Are pagers that allow to scroll through a file in an interactive view
+
+### `head` and `tail`
+
+`head` is used to read the first lines of a file. By default it reads 10. `tail` does the opposite.
+
+## Output handling
+
+| Command | Description | Example |
+| - | - | - |
+| | | | 
+
+
+## Exercise result from Linux fundamentals module and section Filter Contents
+
+`cat /etc/passwd | tr ":" " " | column -t | awk '{ print $1 "," $3 "," $6 }' | grep -v "nologin" | wc -l`
+
+### `sort` 
+
+Can be used to order output alphanumerically
+
+`cat /etc/passwd | sort`
+
+### `grep`
+
+Outputs lines with desired filters
+
+`cat /etc/passwd | grep "/bin/bash"`
+
+### `cut`
+
+Can be used to process out certain parts of the output using delimiters
+
+`cat /etc/passwd | grep /bin/bash | cut -d":" -f1`
+
+### `tr`
+
+Can be used to remove and replace certain symbols
+
+`cat /etc/passwd | grep /bin/bash | tr ":" " "`
+
+### `column`
+
+Outputs all strings separated with a space to be outputted in nicely formatted columns
+
+```bash
+cat /etc/passwd | tr ":" " " | column -t
+```
+
+### `awk`
+
+Can be used to reformat output. We can use it to reference items separated with delimiters by their indexes and reformat them in any string we like. We can even use math operations
+
+```bash
+cat /etc/passwd | grep -v "false\|nologin" | tr ":" " " | awk '{print $1, $NF}'
+```
+
+### `sed`
+
+It is used to replace strings based on a supplied regex pattern. In this case bin gets replace with htb
+
+```bash
+cat /etc/passwd | grep -v "false\|nologin" | tr ":" " " | awk '{print $1, $NF}' | sed 's/bin/HTB/g'
+```
+
+### `wc`
+
+can be used to count lines, words, bytes.
+
+```bash
+cat /etc/passwd/ | wc -l
+```
+
+### `uniq`
+
+Filters out unique records that are next to each other

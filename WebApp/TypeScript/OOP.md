@@ -78,9 +78,9 @@ It's a template class that is inherited by other classes. This usually is used f
 1. Some classes are templates, and it doesn't make sense to instantiate objects from them alone
 2. Creating subclasses that have similar behavior but they do it in different ways. 
 
-Example: we have concrete classes - `circle` and `square`, and they might both have a method for calculating the shapes area, but the formulas for them are different so they have to be implemented differently. But also, we may not want to let developers instantiate object from class `shape`, `circle` and `square` class parent, so we make `shape` and `abstract` class. We'll not be able to create object from that particular class, but we'll be able to create instances from concrete descendants and still utilize polymorphism
+Example: we have concrete classes - `circle` and `square`, and they might both have a method for calculating the shapes area, but the formulas for them are different so they have to be implemented differently. But also, we may not want to let developers instantiate object from class `shape`, `circle` and `square` class parent, so we make `shape` into an `abstract` class. We'll not be able to create object from that particular class, but we'll be able to create instances from concrete descendants and still utilize polymorphism
 
-In an abstract class we can either implement *general* methods or *abstract* methods. General methods mean that we declare them inside abstract class and provide an base behavior, that all classes perform by default if the method does not get overridden. But we can also create methods `abstract`, which means descendants will have to implement the `abstract` method. Abstract methods are used for the sake of polymorphism. Polymorphism often decreases the amount of code repetition and conditional checking. 
+In an abstract class we can either implement *general* methods or *abstract* methods. General methods mean that we declare them inside abstract class with base behavior, all classes perform it by default if the method does not get overridden. But we can also make methods `abstract`, which means descendants will have to implement the `abstract` method in their own way. Abstract methods are used for the sake of polymorphism. Polymorphism often decreases the amount of code repetition and conditional checking. 
 
 ### Class interfaces
 
@@ -98,11 +98,11 @@ But interface sometimes is an alternative. As you may implement multiple interfa
 
 ## Polymorphism
 
-Poly(Many)morph(form)ism. Let's a class to implement many variations of the same method or reimplement a methdo. In TypeScript, mainly the class signature can be **overloaded**(that is the word for adding new function signatures)    or a method can be **overriden**(means to change behavior of a inherited method)
+Poly(Many)morph(form)ism. Let's a class to implemented in many different variations of the same method. In TypeScript, mainly the class signature can be **overloaded**(that is the word for adding new function signatures) or a method can be **overriden**(means to change behavior of a inherited method)
 
 *Polymorphism allows us to refer to a subclass object in a super class variable*
 
-This means we can create object like this
+This means we can create objects like this
 
 ```TypeScript
 const mageHero: Hero = new Mage();

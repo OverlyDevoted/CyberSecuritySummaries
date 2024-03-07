@@ -48,3 +48,7 @@ To rename:
 ### `cp`
 
 Used to copy files
+
+### `wc`
+
+Used to print out newline, word, byte count for a file
