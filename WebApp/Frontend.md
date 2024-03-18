@@ -24,6 +24,7 @@ There are platforms where you can make your own website. These are some open-sou
 - WordPress
 - OpenCart
 - Joomla
+
 More closed-source:
 - Wix
 - Shopify

@@ -4,7 +4,7 @@
 2. `git config user.name "name"`
 3. `git config user.email "email"`
 4. `git add .`
-5. `git commit -m "messge"`
+5. `git commit -m "messge"W`
 6. `git branch -M main`
 7. `git remote add origin "origin"`
 8. `git push origin main`

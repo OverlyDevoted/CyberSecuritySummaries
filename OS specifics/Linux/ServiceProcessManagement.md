@@ -53,6 +53,8 @@ Stopped process can be continued.
 
 You can enter `jobs` to see all stopped processes. To continue process you can write `fg {id}` to continue running the process.
 
+there's also the `bg` command, but i did not really understand it.
+
 ## Executing multiple programs
 
 Symbols can be used to queue or let multiple programs run at the same time
