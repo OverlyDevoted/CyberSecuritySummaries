@@ -1,17 +1,17 @@
-# Accessibility 
+# Accessibility
 
 ## a11y (pronounced I)
 
 Web accessibility means that web apps are designed in a way that people with special needs still can understand the web app.
 
 Aids should be considered for these needs:
-    
+
 - Auditory
 - Cognitive
 - Neurological
 - Physical
 - Speech
-- Visual  
+- Visual
 
 1 in 6 persons have some sort of impairment. People with impairment use technology to make their lives easier. This also includes people with inabilities or incapabilities which may be brief, temporary or permanent.
 
@@ -28,7 +28,7 @@ Aids should be considered for these needs:
 Or even situational or environmental circumstances
 
 - Bright sunlight
-- Environment where people cannot listen to audio 
+- Environment where people cannot listen to audio
 - Slow internet connection
 - Limited or expensive bandwidth
 - Devices with small screens
@@ -48,6 +48,7 @@ Software applications that help people with visual impairments
 - Narrator (integrated into Windows)
 
 ### Screen reader features
+
 - Can read by character, word, sentence, line, paragraph
 - Can spell our words
 - Can output speech to text
@@ -64,7 +65,7 @@ Can provide quick lists to navigate to items by:
 
 ## Levels A — AAA
 
-WCAG are a set of standards for making web content accessible 
+WCAG are a set of standards for making web content accessible
 
 WCAG 2.2 is categorized into 3 levels. A(Lowest), AA(MID), AAA(HIGHEST)
 
@@ -90,13 +91,38 @@ It provides information on the roles, properties, states, relationships and focu
 Give semantic meaning to elements, which provides context for the user on what the element will be and how to interact with it.
 
 ARIA elements are generally used to describe elements
+
 - That do not exist in the HTML
 - Elements which may not have cross-browser support
 - Elements which may have implementation gaps with screen readers
 
+![Periodic ARIA role table](./../../Images/HTML/aria-roles.png)
+
 ### ARIA states
 
+States that can be applied to the elements. They are likely to change as the user interacts with the page.
 
+They are usually inserted into an element
 
-[Aria guide](https://www.lullabot.com/articles/what-heck-aria-beginners-guide-aria-accessibility)
-[WCAG 2 A and AA checklist](https://usability.yale.edu/web-accessibility/articles/wcag2-checklist)
+```html
+<element aria-state="value"></element>
+```
+
+### ARIA properties 
+
+Properties are applied to elements. They stay static instead of being dynamic like states
+
+## General tips
+
+1. Decorative images should have an empty `alt` attribute
+2. To make another `option` the default value for `select` element, the `defaultValue` attribute should be used to reference `option` element's value.
+3. Wrap radio input in a `fieldset` tag and and a `legend` tag on top. Then the `input` and `label` can be wrapped in a `div`
+4. In React use `htmlFor` instead of `for` attribute for binding label with `input`'s id.  
+
+## Links
+
+- [Aria guide](https://www.lullabot.com/articles/what-heck-aria-beginners-guide-aria-accessibility)
+- [WCAG 2 A and AA checklist](https://usability.yale.edu/web-accessibility/articles/wcag2-checklist)
+- [ARIA patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [ARIA 101](https://a11y-101.com/)
+- [w3 grouping](https://www.w3.org/WAI/tutorials/forms/grouping/)

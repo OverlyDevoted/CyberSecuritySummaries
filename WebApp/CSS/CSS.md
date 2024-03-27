@@ -178,3 +178,7 @@ Mobile first media queries use `min-width` while desktop first use `max-width`. 
 ```
 
 Hides everything for print.
+
+### Modals
+
+For modals use tabindex to switch focus on the modal for keyboard navigation
