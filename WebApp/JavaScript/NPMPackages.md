@@ -17,3 +17,7 @@ This file contains packages both for use in NodeJS and in browsers
 ## Nodemon
 
 [For automatically running NodeJS file upon restart](https://www.npmjs.com/package/nodemon)
+
+## Mongoose
+
+[For handling connections with MongoDB](https://www.npmjs.com/package/mongoose)
