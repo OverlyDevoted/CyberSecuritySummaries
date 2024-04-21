@@ -65,6 +65,7 @@ Additionally i'd really like to know how to hack other systems and defend them, 
 
 Learning pyramid:
 Different models of learning usually lead to different results. Results of learning is how well we remember and understand the topic. Also it goes deeper, as we are better at some topic we would not only be able to recall it and tell it to someone else, but we would also be able to practically apply it, test it in different environments and achieve measurable results. The highest level of understanding of a to 
+
 1. By listening to a lecture we retain about 5%
 2. By reading we retain about 10%
 3. By watching a audiovisual we retain about 20%
@@ -72,6 +73,7 @@ Different models of learning usually lead to different results. Results of learn
 5. Engaging in a discussion about a topic we retain about 50%
 6. By practicing concepts we retain about 75%
 7. By explaining it to other we retain about 90%    
+
 But this pyramid concept has some criticisms as the research paper where the pyramid is described, does not provide a very detail methodology applied, it's quality, parameters the methodology was tested on like: time, population size, for the research and thus the conclusions and the model itself are deemed as not very trustworthy. 
 
 Document how did you research and document the `Learning Pyramid` 
