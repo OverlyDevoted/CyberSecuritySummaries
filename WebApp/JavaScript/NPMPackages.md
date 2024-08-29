@@ -41,3 +41,7 @@ This file contains packages both for use in NodeJS and in browsers
 ## multer
 
 [Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files](https://www.npmjs.com/package/multer)
+
+## js-cookie
+
+[API for handling cookies](https://www.npmjs.com/package/js-cookie)

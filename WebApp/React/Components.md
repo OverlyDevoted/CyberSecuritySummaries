@@ -1,6 +1,18 @@
-Components are reusable components that can be used to build UI
+Components are reusable components that can be used to build UI or introduce functionality
 
 Their purpose may be to execute heavy or only used for presentation
+
+# Atomic design pattern
+
+Components impose a methodology for structuring your app into 5 distinct constructional blocks. These blocks help to have linear app development and separate concerns into their own modular functionalities.
+
+In react atomic design can be visualized like this:
+
+1. Atoms - single component: button, input, checkbox
+2. Molecules - a group of atoms: create form from button, input checkbox
+3. Organism - Connecting molecules together to create a unit of functionality: navigation bar
+4. Templates - a group of many different organisms doing their thing or depending on each other to form a page where user can do some task
+5. Pages - basically the app, user can explore a plethora of different pages with their own unique functionalities that are completely separate from the page before.
 
 ## Props
 
