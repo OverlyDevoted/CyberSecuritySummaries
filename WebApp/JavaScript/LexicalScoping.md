@@ -1,6 +1,7 @@
 # Difference between regular expression and arrow functions
 
 `this` for different scopes is determined on a number of factors.
+
 1. The place something was defined;
 2. Determined during runtime;
 
