@@ -51,10 +51,70 @@ then it return result. It looks up result and returns it to global context that 
 
 So the call stack always has the `global()[^note]` function 
 
-[^note]
+[^note] The engine itself calling the entry file
 
 and it adds function onto it when they are met during execution of call stack. The thread of execution always runs the function that is at the top of the call stack. Functions are popped off the callstack when the thread of execution hits the `return` keyword and execution thread returns to `global()`
 
 ## Higher order functions
 
-Let's say we have a function that accepts values as arguments. Higher order functions accepts additional functionality as arguments. That means JavaScript let's you to pass functions as arguments
+Let's say we have a function that accepts values as arguments. Higher order functions accepts additional functionality as arguments. That means JavaScript let's you to pass functions as arguments.  
+
+```js
+function copyAndTransform(array, tranformFn) {
+  const output = []
+  for (let i = 0; i < array.length; i++) {
+    output.push(transformFn(array[i]))
+  }
+  return output
+}
+```
+Bonus: does the `for` loop get its own execution context?
+
+>! No it does not. Instead it gets **protected namespace**. With that, the `i` variable defined as a iterator will only be accessed within the curly braces of the `for` loop. It'a a protected memory space for labels defined inside the `for` loop. Same with `while`, `switch`, `if` anything that introduces it's own curly braces
+
+The function we inserted into our higher order function is called **callback function**
+
+### First-class objects
+
+Functions are treated as first-class objects, which means they inherit object prototype and they are treated like any other object inside JavaScript. That's why they can be saved in variables, passed in as arguments. They are just objects behind the scenes, like arrays. 
+
+When function is a property of another object, its then called a method. 
+
+> Like functions defined inside classes are methods. 
+
+### Benefits of higher order functions 
+
+- They help write more declarative code. Core of functional programming and declarative programming
+- Backbone of asynchronous JavaScript.
+
+## Arrow function 
+
+Legibility and readability
+
+Legibility means to reduce the content to read
+Readability the syntax and how something can be structured and grouped to make it more digestible by just observing
+
+They are different from functions under the hood, but generally it's the same and it's considered more legible, but sometimes not more readable.
+
+## Closures
+
+Before diving into what closures are, let's discuss what it brings. It enables to write functions with their own memories that persist between its calls. It enables you to build iterators, handle partial application and maintain state in an asynchronous world
+
+### Functions with memories
+
+We know that when we call a function it creates a new execution context, that has it's own local memory for storing values. The local memory is also called - variable environment or state. When the function finishes running, it's execution context gets deleted with the memory and it's output gets transferred. Some data of local memory can be kept.
+
+Let's say during a function call it returns another function.
+
+```js
+function outer() {
+  let counter = 0;
+  function inner() { counter++ ;}
+  return inner;
+}
+const generatedFunc = outer();
+generatedFunc();
+generatedFunc();
+```
+
+In this case, when the `generatedFunc()` is called it goes through a call stack and the local memory of each scope to check for a variable `counter`. Intuitively it should not be finding the `counter`, because when we call `generatedFunc` there's no outer on the call stack anymore. It still can increment `counter`, but how - when the function was returned by outer and assigned to `generatedFunc` identifier in the global context, `generatedFunc` came out with the attached local memory of the `outer`. So now when it checks the scopes it checks its scope, then goes to check the attached local memory (in `[[scope]]` attribute).
