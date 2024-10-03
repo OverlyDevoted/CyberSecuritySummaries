@@ -117,4 +117,20 @@ generatedFunc();
 generatedFunc();
 ```
 
-In this case, when the `generatedFunc()` is called it goes through a call stack and the local memory of each scope to check for a variable `counter`. Intuitively it should not be finding the `counter`, because when we call `generatedFunc` there's no outer on the call stack anymore. It still can increment `counter`, but how - when the function was returned by outer and assigned to `generatedFunc` identifier in the global context, `generatedFunc` came out with the attached local memory of the `outer`. So now when it checks the scopes it checks its scope, then goes to check the attached local memory (in `[[scope]]` attribute).
+In this case, when the `generatedFunc()` is called it goes through a call stack and the local memory of each scope to check for a variable `counter`. Intuitively it should not be finding the `counter`, because when we call `generatedFunc` there's no outer on the call stack anymore. It still can increment `counter`, but how - when the function was returned by outer and assigned to `generatedFunc` identifier in the global context, `generatedFunc` came out with the attached local memory of the `outer`. So now when it checks the scopes it checks its scope, then goes to check the attached local memory (in `[[scope]]` attribute). The colloquial name could be **covered over variable environment**. Covered over in a sense, that it cannot be accessed by anything but the function that captures the variable for it's scope.
+
+JavaScript abides by lexical/static scope. Where the function is saved, determines it scope, or in other words, what data it will have access to. Dynamically scoped languages determines the variables the function has acces to by the location it was run. Knowing that a more precise name for function's backpack could be given - **Persistent lexical scope reference data**. But in general everyone calls it *closure* which is more of an umbrella term for the whole feature and not the extracted local memory of a saved function scope.
+
+### Memoization
+
+Memoization is a practice of storing and input and output for a function. With closures that can be made without creating additional variables
+
+### Iterators and generators
+
+Iterator could be a helper function, that each time returns a subsequent array element
+
+Generator can be used to create a pausing of a function
+
+### Module pattern
+
+Creating variables in the persistent lexical scope reference data can help avoid polluting global namespace with variables
