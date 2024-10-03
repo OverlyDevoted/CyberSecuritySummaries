@@ -134,3 +134,15 @@ Generator can be used to create a pausing of a function
 ### Module pattern
 
 Creating variables in the persistent lexical scope reference data can help avoid polluting global namespace with variables
+
+## JavaScript synchronous execution
+
+JavaScript does not have any asynchronous code execution features. It does not create treads to execute background tasks. Instead it uses synchronisity to simulate asynchronous behavior.
+
+### Web browsers
+
+To understand how some behaviors inside of JavaScript are possible it's important to look further and at the back-bone it stands on.
+
+Browser and JS runtimes have some features, that JS utilizes to enrich it's toolkit. So browser has APIs for sending network requests, rendering and JS uses it but not implement it. JavaScript may seem to have related functionalities implemented, but those are facade functionalities. 
+
+JavaScript does not have `settimeout` implemented, it uses the runtime API to create a timer. Same for accessing the DOM, we use `document`, `fetch`, `console`. All these are labels (API implementations) for runtime features.
