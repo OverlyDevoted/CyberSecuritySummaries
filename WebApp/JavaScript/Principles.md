@@ -174,7 +174,7 @@ Now imagine we are fetching some data from somewhere the internet. Currently in 
 
 ## Two-pronged facade function (promise)
 
-It's a solution to a **callback hell**. Functions that require to utilize browser features will initiate background web browser work and return a placeholder object (promise) immediately in JavaScript. When calling a `fetch` function, it returns something, it returns a `promise` object. That object contains a `value` and an onFulfilled, which is a big empty array `{value: undefined, onFulfilled: []}`, while it returns this object it simultaneously sends a message to the browser to fetch data. The return object is there to show, to keep track of what is happening in the browser. When the data gets fetched it is placed inside the value property.
+It's a solution to a **callback hell**. Functions that require to utilize browser features will initiate background web browser work and return a placeholder object (promise) immediately to JavaScript. When calling a `fetch` function, it returns something, it returns a `promise` object. That object contains a `value` and an onFulfilled, which is a big empty array `{value: undefined, onFulfilled: []}`, while it returns this object it simultaneously sends a message to the browser to fetch data. The return object is there to show, to keep track of what is happening in the browser. When the data gets fetched it is placed inside the value property.
 
 `OnFulfill` is a callback that is called when the value is filled, it's a hidden property. We can pass a function for onFulfilled by calling `promise.then`. We can also chain `.then` each subsequent return will have result argument of the previous `.then`
 
@@ -235,7 +235,7 @@ Now, as developers, we want to minimize work. We want our code to be easy to rea
 
 The case above only satisfies one - easy to understand. We know that we can access name, age and increment properties. But let's take a look at increment. What variable does it reference when calling the increment? Does reference the appropriate user variable or the newUser from the context the function was defined in? It's the backpack situation. It creates a persistent lexical scope reference data of newUser instead of using itself as a reference. So every time we create the object, each time we are creating the increment function that has a backpack attached to it. Now what if we wanted to add functions to `user1`? We would have to do it to each user variable, which is not ideal.
 
-### Prototype chain
+### Solution 2. Prototype chain
 
 But we can remove defining the function inside the object. And we can create another object and when we would call `user1.increment()` it would not stop by checking if it itself has the method, it would go down the prototype chain and check if any of the prototypes has the required property.
 
@@ -266,7 +266,7 @@ Now this regarding developer concerns - how does this code achieve our goals>
 
 There's headline object called `Object.prototype` that is a default prototype reference for all objects in `__proto__`
 
-### Second way of prototype chaining
+### Solution 3. Second way of prototype chaining
 
 We can reduce a lot of manual work by using `new` keyword
 
@@ -313,8 +313,31 @@ Well, now this function has an additional object attached, we can access it's pr
 multiplyBy2: has a function and an object {stored: 5, hidden: prototype: {}}
 ```
 
-### Second way. Continuation.
+### Solution 3. Continuation.
 
 So now we know that every function has an empty object, where do you think our shared functions get stored?
 
 In our example we had `userCreator` function, and we would manually add functions to the prototype property, and then all the objects created with `userCreator` will have have their `__proto__` linked to the `userCreator` `prototype` property.
+
+There is a problem with this solution. Because by looking at userCreator function, we cannot say that it requires to be called with `new` keyword, that might lead to bugs. Because of that there is a 3rd way.
+
+### Solution 4. es6 classes. Syntactic sugar
+
+In the previous example we defined the prototype object functions separately from the factory function. Classes let's us to have everything in the same place.
+
+```js
+class UserCreator {
+  constructor (name, score) {
+    this.name = name;
+    this.score = score;
+  }
+
+  increment (){ this.score++; }
+  login (){ console.log(`${this.name} logged in`) }
+
+  const user1 = new UserCreator("Eva", 9);
+  user1.increment();
+}
+```
+
+Creates the same thing as our creator. But its syntactic sugar. It may look like classes from other languages but it's not even close to how it works in C# or java or any other OOP language. As we discussed before. This syntactic sugar is a way to make code more legible. It is the same as the second solution, but classes abstracts two layers of the same thing.
