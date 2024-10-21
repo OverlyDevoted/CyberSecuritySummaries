@@ -1,4 +1,4 @@
-# Javascript principles
+# Javascript principles by Will Sentance
 
 When javascript engine runs code it:
 
