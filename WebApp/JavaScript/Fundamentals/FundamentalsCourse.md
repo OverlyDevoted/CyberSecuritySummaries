@@ -167,7 +167,7 @@ ToNumber(".0") // 0
 ToNumber(".") // NaN
 ToNumber("0xaf") // 175
 
-ToNumber(false) // 0
+ToNumber(false) // 0 but professor says boolean conversion it should ve been NaN
 ToNumber(true) // 1
 ToNumber(null) // 0 does not make sense why not NaN
 ToNumber(undefined) // NaN this makes sense 
@@ -176,7 +176,7 @@ ToNumber(undefined) // NaN this makes sense
 - ToNumber(object). It will do ToPrimitive(number), which does valueOf() and then toString(). For any [] or {} `valueOf() { return this; }`. So it ignores number and goes directly to toString(). So it will produce a `toString()`
 
 ```js
-[""].ToPrimitive("number") // 0 WTF?
+ToPrimitive([""], "number") // 0 WTF?
 ["0"].ToPrimitive("number") // 0
 ["-0"].ToPrimitive("number") // -0
 [null].ToPrimitive("number") // 0 WTF this get turned into empty string, which then turns into 0
@@ -191,3 +191,59 @@ ToNumber(undefined) // NaN this makes sense
 {}.ToPrimitive("number") // NaN
 {valueOf() {return 3;}}.ToPrimitive("number") // 3
 ```
+
+- ToBoolean It's not algorithmic, it's more of a lookup. It determines whether a value is falsy or truthy. The function checks if the value is some of the values for falsy if not it's truthy. Falsy values:
+
+- `""`
+- `0, -0`
+- `null`
+- `NaN`
+- `false`
+- `undefined`
+
+As you can see it does not perform `ToPrimitives` like the others.
+
+## Coercion
+
+String literals use coersion to string. It does it implicitly. Sometimes people prefer to explicitly convert types. They add string coersion methods to e.g. numbers ``My age is ${String(number)}``
+
+Contrarary to + operator on number and string values, - operator will turn string into number.
+
+In `if` statements, it's worth pondering whether it's better to be implicit or explicit with falsy and truthy. Sometimes when we use `while(myArr.length)` it's better for readability to have `while(myArr.length > 0)`
+
+## Boxing
+
+But how do primitive type values have properties. For example `"my name".length`? That is called Boxing. It's a form of implicit coercion. Because we are trying to invoke a function on a value that is not an object and JS makes it into an object. Other languages do not do that. This is where the saying "in javascript everything is an object". Its not true, because javascript just turns everything into an object.
+
+## Corner cases of type coercion
+
+```js
+Number("");             //0 WTF
+Number("    \t\n");     //0 WTF
+Number(null);           //0 WTF
+Number(undefined);      // NaN
+Number([]);             // 0 WTF
+Number([1,2,3]);        // NaN 
+Number([null]);         // 0 WTF
+Number([undefined]);    // 0 WTF
+Number({})              // NaN
+
+String(-0)              // "0" WTF
+String(null)            // "null" 
+String(undefined)       // "undefined" 
+String([null])            // "" WTF
+String([undefined])       // "" WTF
+
+Boolean(new Boolean(false)) // true WTF
+```
+
+White-space and caret return, tabulation, new-line symbols are ignored when doing type coercion. 
+
+```js
+1 < 2 < 3 // true
+3 > 2 > 1 // false
+```
+
+The first check (`1 < 2`) gets coerced into `true`, which is coersed into `1` and then we get true. It's a happy accident, but now what actually happens. Because in the second example we see something intuitive that is not the case in JS
+
+EMBRACE COERCION YEAH. The professor does not think codebase should be dumbed down to the common denominator 
