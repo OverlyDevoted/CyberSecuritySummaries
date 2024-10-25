@@ -246,4 +246,10 @@ White-space and caret return, tabulation, new-line symbols are ignored when doin
 
 The first check (`1 < 2`) gets coerced into `true`, which is coersed into `1` and then we get true. It's a happy accident, but now what actually happens. Because in the second example we see something intuitive that is not the case in JS
 
-EMBRACE COERCION YEAH. The professor does not think codebase should be dumbed down to the common denominator 
+EMBRACE COERCION YEAH. The professor does not think codebase should be dumbed down to the common denominator. Coding style should makes value types plain and obvious. Embrace coercion, implicit/explicit. Make sure the types are clear. Thus corner cases are covered safely. Dynamic typing is JSs strong quality.
+
+Implicitness in JS is an abstraction.
+
+## `==` vs `===`
+
+`==` checks loose equality - checks value, while `===` checks for strict equality checks value and type 
