@@ -397,3 +397,4 @@ Duck typing is an informal way of classifying objects that are not related to ea
 duck and cat are both objects. Both of them respond to the method type . Therefore as far as JavaScript is concerned both objects are of the same type. You can call this informal grouping of unrelated objects x, group, or even duck.
 
 It may be useful to compare if something contains the same method, or use common methods on different "type" objects.
+
