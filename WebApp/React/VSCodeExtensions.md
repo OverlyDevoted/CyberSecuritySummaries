@@ -8,6 +8,7 @@
 - Bookmarks (meh could help)
 - Code spell checker
 - Command palette NPM
+    - Bind to CTRL + ALT + .
 - EOF mark
 - Gitlens
 - Live server
