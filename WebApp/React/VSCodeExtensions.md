@@ -1,9 +1,13 @@
-## Visuals
+## Extensions
+
+These are personal, but I've noticed they increase productivity, less time in menus, faster text selection, greps
+
+### Visuals
 - Color highlight
 - escook-theme
 - Material icon theme
 
-## QoL
+### QoL
 - Auto rename tag
 - Bookmarks (meh could help)
 - Code spell checker
@@ -11,7 +15,6 @@
     - Bind to CTRL + ALT + .
 - EOF mark
 - Gitlens
-    - No need for the package but bind `Git: Checkout to` (no detached) to CTRL + ALT + /  
 - Live server
 - Prettier
 - Prettier ESLint
@@ -21,9 +24,18 @@
     - Bind to SHIFT + CTRL + ALT + (END for stop stopwatch, HOME for reset, R for resume)   
 - SVG preview
 
-## React
+### React
 - HTML CSS support
 - i18n ally
 - ESlint
 - JS and TS nightly
 - ES7 + React/Redux
+
+## Binds
+
+1. No need for the package but bind `Git: Checkout to` (no detached) to CTRL + ALT + /  
+
+## Options
+
+1. Tab size - 2
+2. Convert indentation to spaces
