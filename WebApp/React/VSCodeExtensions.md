@@ -11,6 +11,7 @@
     - Bind to CTRL + ALT + .
 - EOF mark
 - Gitlens
+    - No need for the package but bind `Git: Checkout to` (no detached) to CTRL + ALT + /  
 - Live server
 - Prettier
 - Prettier ESLint
