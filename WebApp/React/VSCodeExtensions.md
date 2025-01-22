@@ -28,7 +28,7 @@ These are personal, but I've noticed they increase productivity, less time in me
 - HTML CSS support
 - i18n ally
 - ESlint
-- JS and TS nightly
+- JS and TS nightly (add remove missing imports)
 - ES7 + React/Redux
 
 ## Binds
@@ -37,5 +37,12 @@ These are personal, but I've noticed they increase productivity, less time in me
 
 ## Options
 
-1. Tab size - 2
+1. Visual Studio Code, and Click Settings at the bottom left. Click Settings. Click Tab size. Type in Tab size of your choice.
 2. Convert indentation to spaces
+3. SHIFT + CTRL + P, type user settings json and add:
+```json
+"editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.addMissingImports": "always"
+}
+```
