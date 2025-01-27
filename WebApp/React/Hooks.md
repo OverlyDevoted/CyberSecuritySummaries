@@ -146,3 +146,9 @@ const useFetchAnyActivity = (): UseFetchActivity => {
 
 export default useFetchAnyActivity;
 ```
+
+### useImperativeHandle
+
+It let's you customize a ref that is passed from a parent inside of a child. It enables you to create *imperative handles* for things that are inside of children. So parents can call those handles through ref to trigger some behavior for a child. 
+
+React uses declarative approach as its paradigm. SO it is advised to avoid imperative style.
