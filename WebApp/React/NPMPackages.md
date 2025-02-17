@@ -32,6 +32,12 @@ New hotness with vitest is playwright
 
 Is used for mocking api data for tests
 
+## react-hook-form
+
+Easier form state management and form submission 
+
+Integrating with ZOD and MUI https://github.com/codegenixdev/react-hook-form-mui-zod-boilerplate/blob/main/src/components/RHFAutocomplete.tsx
+
 ## vitest-coverage
 
 Generates coverage reports. Will not work with playwright. Have to use istanbul instead
