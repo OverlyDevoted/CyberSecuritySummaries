@@ -184,3 +184,72 @@ static int add(int... numbers) {
   return result;
 }
 ```
+
+## ArrayList
+
+ArrayList is a resizable array that stores objects. Normal arrays are fixed in size, but ArrayList are dynamic.
+
+## Writing to files
+
+FileWrite - small or medium text files
+BufferedWriter - better performance for large amount of text
+PrintWriter - Best for structured data, like reports or logs
+FileOutputStream - Best for binary files (e.g. images, audio files)
+
+```java
+try (FileWriter write = new FileWriter("C:\\Users\\rober\\Desktp\\test.txt")) {
+  write.write("File has been written");
+  } catch (IOException e) {
+    System.out.println(e.getMessage());
+  }
+```
+
+## Reading files 
+
+BufferedReader + FileReader: Best for reading line by line
+FileInputStream: Best for binary files
+RandomAccessFile: Best for read/write specific portions of a large file
+
+```java
+String filePath = "C:\\Users\\rober\\Desktop\\test.txt";
+
+try (BufferedReader reader = new BufferedReader(new FileReader(filePath));) {
+    System.out.println("File found");
+    String line;
+    while((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+}
+catch (FileNotFoundException e) {
+    System.out.println("File not found" + e.getMessage());
+}
+```
+
+//dates
+
+```java
+LocalDate date = LocalDate.now();
+    System.out.println(date);
+    LocalTime time = LocalTime.now();
+    System.out.println(time);
+    LocalDateTime d = LocalDateTime.now();
+    System.out.println(d);
+    //UTC
+    Instant instant = Instant.now();
+    System.out.println(instant);
+
+    //Formatting
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    System.out.println(formatter.format(d));
+    
+    LocalDate createdDate = LocalDate.of(2000, 2, 1);
+    System.out.println(createdDate);
+    System.out.println(createdDate.isBefore(date));
+```
+
+## Timer and TimerTask
+
+Timer - is a class for scheduling tasks at specified times. Useful for notifications, scheduled updates, repetitive actions
+
+TimerTask - Represents the task that will be executed by the timer.
+Anonymous class object instantiation is used to override TimerTask class actions to perform any of your actions

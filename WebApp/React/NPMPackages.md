@@ -32,6 +32,14 @@ New hotness with vitest is playwright
 
 Is used for mocking api data for tests
 
+## vitest-coverage
+
+Generates coverage reports. Will not work with playwright. Have to use istanbul instead
+
+## vitest/ui
+
+A GUI for running test and reviewing them 
+
 ## Zustand
 
 ## React query

@@ -12,5 +12,11 @@ He likes integration tests, UX, like how a user can login and buy something. But
 
 If he does not like a test, he deletes it
 
-## Vitest
+## Testing
 
+In React there are different parts of code that can be tested. 
+
+1. Component. Does component render what we want, changes states how we want on certain events?
+2. API tests. We can mock data and make our fetch APIs return our passed values
+3. Snapshot testing. Is hack to increase test coverage and it is a low effort, low confidence (does not provide a guarantee component works correctly) way of testing. Best case for snapshot test is for dumb components, like labels, headings that for example just take in text and display it. It tracks history of a component. So if it is different from previous test, then it fails. Also for may be used to APIs test.
+4. Browser tests. Basically simulates browser environment to run tests.
