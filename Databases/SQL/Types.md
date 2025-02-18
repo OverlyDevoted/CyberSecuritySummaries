@@ -1,0 +1,1 @@
+INT, INT4 or INTEGER are the same thing. Feel free to use what suits you. Similarly DEC, FIXED, and DECIMAL are the same thing.
