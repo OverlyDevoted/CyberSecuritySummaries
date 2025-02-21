@@ -1,13 +1,5 @@
 [Courtesy of Brian Holt](https://sql.holt.courses/lessons/data/inserts)
 
-Only run this if you don't have the container running. It'll error otherwise
-```bash
-docker pull postgres:14
-
-docker run -e POSTGRES_PASSWORD=lol --name=pg --rm -d -p 5432:5432 postgres:14
-
-docker exec -u postgres -it pg psql
-```
 # Data Definition
 
 ## Create table
@@ -179,3 +171,17 @@ SELECT * FROM ingredients WHERE LOWER(CONCAT(title, type)) LIKE LOWER('%fRuIt%')
 There's also ILIKE which will eliminate case sensitivity in comparisons.
 
 With LIKE keyword there was some type of SQL regex thing going on. We had `%` which means 0 or infinite amount of characters. So you can create a bunch of different regex'es with that. `b%t` may crete many different words with many letters in between b and t. There is also `_` - underscore matches 1 and only one symbol. So - `b_t` but, bet; but not - belt, burnt and so on. 
+
+## Foreign keys as relationships
+
+### Double relationship
+
+Usually this is created for many-to-many tables. You have to create a constraint of primary key that specifies both table, for example ids as primaries. This will create uniqueality and you won't be able to insert same pair of ids into the table as it will error.
+
+```sql
+CREATE TABLE recipe_ingredients (
+  recipe_id INT REFERENCES recipes(recipe_id) ON DELETE NO ACTION,
+  ingredient_id INT REFERENCES ingredients(ingredient_id) ON DELETE NO ACTION,
+  CONSTRAINT recipe_ingredients_pk PRIMARY KEY (recipe_id, ingredients_id) 
+);
+```

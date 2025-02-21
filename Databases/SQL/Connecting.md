@@ -1,3 +1,15 @@
+## Docker
+
+Only run this if you don't have the container running. It'll error otherwise
+
+```bash
+docker pull postgres:14
+
+docker run -e POSTGRES_PASSWORD=lol --name=pg --rm -d -p 5432:5432 postgres:14
+
+docker exec -u postgres -it pg psql
+```
+
 ## NodeJS
 
 [pg](https://node-postgres.com/) has two ways to connect to a database: a client and a pool.

@@ -20,4 +20,5 @@ CREATE TABLE example (id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY);
 ```sql
 ALTER TABLE ADD COLUMN type VARCHAR ( 50 ) NOT NULL DEFAULT 'vegetable';
 ```
+- UNIQUE
 - CREATE INDEX - Used to create and retrieve data from the database very quickly
