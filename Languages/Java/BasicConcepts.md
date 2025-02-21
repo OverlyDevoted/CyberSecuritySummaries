@@ -253,3 +253,10 @@ Timer - is a class for scheduling tasks at specified times. Useful for notificat
 
 TimerTask - Represents the task that will be executed by the timer.
 Anonymous class object instantiation is used to override TimerTask class actions to perform any of your actions
+
+
+## static
+
+Object has to be all-encompassing of everything it needs static is something we create when we don't need using fields or methods that are all connected within the object class.
+Static methods would usually be just methods that receive input and output.
+The whole purpose of classes is to have objects that you would not need to pass the data over and over again, but just call the behaviors

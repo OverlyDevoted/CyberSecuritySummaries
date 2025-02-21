@@ -2,9 +2,9 @@
 
 ### Java Syntax & Basics
 
-  Variables, Data Types, Operators
-  Control Flow Statements (if-else, switch, loops)
-  Methods & Functions
+- [x] Variables, Data Types, Operators
+- [x] Control Flow Statements (if-else, switch, loops)
+- [x] Methods & Functions
 
 ### Object-Oriented Programming (OOP) in Java
 
