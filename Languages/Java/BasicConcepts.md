@@ -32,6 +32,22 @@ public static int IntScan() {
 
 For all your math related methods
 
+## Text blocks
+
+A newer java feature
+
+TextBlock are used to work with multiline string. You cannot open and close multiline string on the same line.
+
+```java
+String json = """
+              {
+              house: "big",
+              flat: "huge"
+              }
+              """;
+System.out.println(json);
+```
+
 ## random
 
 ```java
@@ -79,6 +95,8 @@ switch (day) {
 ## Java record keyword
 
 With Java 14, a record keyword was introduced that helps creating immutable classes. 
+
+POJO - plain old java object. It's a simple object that contains some fields, setters/getters. You can add methods to records. Then instantiate like any other class.
 
 Old way:
 
