@@ -174,6 +174,46 @@ With LIKE keyword there was some type of SQL regex thing going on. We had `%` wh
 
 ## Foreign keys as relationships
 
+### Foreign key
+
+Often created in one-to-many relationships
+
+Imagine we have a table
+
+```sql
+CREATE TABLE recipes (
+  recipe_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR ( 255 ) UNIQUE NOT NULL,
+  body TEXT
+);
+INSERT INTO recipes
+  (title, body)
+VALUES
+  ('cookies', 'very yummy'),
+  ('empanada','ugh so good'),
+  ('jollof rice', 'spectacular'),
+  ('shakshuka','absolutely wonderful'),
+  ('khachapuri', 'breakfast perfection'),
+  ('xiao long bao', 'god I want some dumplings right now');
+```
+
+Now let's say you wanted to create a table that would store photos for a recipe. A single photo would only have one recipe it belongs to, but a single recipe might have multiple photos. That's how you would create this relationship in SQL:
+
+```sql
+CREATE TABLE recipes_photos (
+  photo_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  url VARCHAR(255) NOT NULL,
+  recipe_id INTEGER REFERENCES recipes(recipe_id) ON DELETE CASCADE
+);
+```
+With references you can specify what happens to a record when a record that is referenced inside the record is deleted.
+
+### ON DELETE
+
+- ON DELETE CASCADE: if the references row is deleted, delete this too
+- ON DELETE SET NULL: sets to null
+- ON DELETE NO ACTION: throws an error. In this case if we tried to delete a recipe without deleting it's photos, we would get an error.
+
 ### Double relationship
 
 Usually this is created for many-to-many tables. You have to create a constraint of primary key that specifies both table, for example ids as primaries. This will create uniqueality and you won't be able to insert same pair of ids into the table as it will error.
@@ -185,3 +225,13 @@ CREATE TABLE recipe_ingredients (
   CONSTRAINT recipe_ingredients_pk PRIMARY KEY (recipe_id, ingredients_id) 
 );
 ```
+
+## CHECK
+
+CHECK is a type of constraint that allows you to set conditions on the data. One example of them could be enforcing the use of enumerated values. Test if a constant length value like zip code is 5 characters (US) or that age isn't negative. 
+
+```sql
+ALTER TABLE ingredients ADD CONSTRAINT ingredient_type_enum CHECK (type IN ('vegetable', 'fruit', 'meat', 'other'));
+```
+
+Type is the column name in ingredients. You can also create CHECK constraints while creating the table
