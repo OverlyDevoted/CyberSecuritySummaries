@@ -8,14 +8,14 @@
 
 ### Object-Oriented Programming (OOP) in Java
 
-  Classes & Objects
-  Encapsulation, Inheritance, Polymorphism, Abstraction
-  Interfaces & Abstract Classes
+- [x] Classes & Objects
+- [x] Encapsulation, Inheritance, Polymorphism, Abstraction
+- [x] Interfaces & Abstract Classes
 
 ### Exception Handling
 
-  try-catch-finally, throw, throws
-  Custom Exceptions
+- [x] try-catch-finally, throw, throws
+- [x] Custom Exceptions
 
 ### Collections Framework
 
@@ -46,9 +46,9 @@
 
 ✔ Functional Programming & Streams API
 
-    Lambda Expressions
-    Streams (map, filter, reduce)
-    Method References
+- [x] Lambda Expressions
+- [x] Streams (map, filter, reduce)
+- [x] Method References
 
 ✔ JDBC (Java Database Connectivity)
 

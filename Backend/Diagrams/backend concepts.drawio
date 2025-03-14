@@ -1,0 +1,134 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0" version="26.1.1" pages="2">
+  <diagram name="Page-1" id="ks2c8EQlYCkEmozBxJI9">
+    <mxGraphModel dx="1434" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="92ecYczXcuxjHfWGLC4_-3" value="&lt;div&gt;Controllers&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-4" value="Contains functions for each object model. These functions contains these logical concerns: fetches to database, processing data, validating, forming responses" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.4;" vertex="1" parent="1">
+          <mxGeometry x="310" y="120" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-17" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="92ecYczXcuxjHfWGLC4_-5" target="92ecYczXcuxjHfWGLC4_-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-18" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="92ecYczXcuxjHfWGLC4_-5" target="92ecYczXcuxjHfWGLC4_-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="92ecYczXcuxjHfWGLC4_-5" target="92ecYczXcuxjHfWGLC4_-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="92ecYczXcuxjHfWGLC4_-5" target="92ecYczXcuxjHfWGLC4_-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="400" />
+              <mxPoint x="340" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-5" value="&lt;div&gt;Javascript&lt;/div&gt;&lt;div&gt;Backend&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-7" value="Routers" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-8" value="Specifies concrete endpoints. Inside endpoint definition functions to run are described. For example we can add a controller function or additionally add a middleware (such as auth) and after a successful middleware run a specified controller object" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.4;" vertex="1" parent="1">
+          <mxGeometry x="544" y="90" width="190" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-9" value="Schemas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="604" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-12" value="Describes object schema. Object may contain other fields of primitive types or even other objects (usually NoSQL)" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.41;" vertex="1" parent="1">
+          <mxGeometry x="660" y="260" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-20" value="Middleware" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-22" value="Something similar to controller functions, but does not belong to a certain endpoint but rather a general function such as authentication middleware" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="THH8SQQmQ3SMqC03W9lm-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="92ecYczXcuxjHfWGLC4_-24" target="92ecYczXcuxjHfWGLC4_-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-24" value="Models" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="92ecYczXcuxjHfWGLC4_-25" value="Represents a domain model and is built from defined schemas " style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.91;" vertex="1" parent="1">
+          <mxGeometry x="215" y="450" width="170" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="i_MMrg0wu__UsNTDy5--" name="Page-2">
+    <mxGraphModel dx="2284" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wdajb5qBAVpel7xz6OTl-1" value="&lt;div&gt;Controllers&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="250" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.088;exitY=0.3;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-7" target="wdajb5qBAVpel7xz6OTl-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.888;exitY=0.263;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-7" target="wdajb5qBAVpel7xz6OTl-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-7" target="wdajb5qBAVpel7xz6OTl-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.025;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-7" target="wdajb5qBAVpel7xz6OTl-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-7" value="&lt;div&gt;Java Spring&lt;/div&gt;&lt;div&gt;through JavaScript&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-8" value="Routers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-10" value="Schemas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="604" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-11" value="Describes object schema. Object may contain other fields of primitive types or even other objects (usually NoSQL)" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.41;" vertex="1" parent="1">
+          <mxGeometry x="656" y="270" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-12" value="Middleware" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="190" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-13" value="Something similar to controller functions, but does not belong to a certain endpoint but rather a general function such as authentication middleware" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.87;size=30;position=0.33;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="150" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-15" target="wdajb5qBAVpel7xz6OTl-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-15" value="Models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="524" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-16" value="Represents a domain model and is built from defined schemas " style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.91;" vertex="1" parent="1">
+          <mxGeometry x="374" y="450" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-18" value="Service" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;glass=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="250" y="233" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-19" value="Controller" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;glass=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="500" y="233" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-25" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="wdajb5qBAVpel7xz6OTl-23" target="wdajb5qBAVpel7xz6OTl-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-23" value="Repository" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;glass=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="90" y="233" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-26" value="Defines database functions. Opposed to JavaScript it decouples business logic apart from database" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="102" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-2" value="Contains functions for each object model. These functions contains these logical concerns: fetches to database, processing data, validating, forming responses" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.4;" vertex="1" parent="1">
+          <mxGeometry x="310" y="110" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wdajb5qBAVpel7xz6OTl-9" value="Specifies concrete endpoints. Inside endpoint definition functions to run are described. For example we can add a controller function or additionally add a middleware (such as auth) and after a successful middleware run a specified controller object" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.4;" vertex="1" parent="1">
+          <mxGeometry x="544" y="90" width="190" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
