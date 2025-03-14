@@ -83,6 +83,10 @@ Elements are in nodes spread in the memory and are connected
 - remove (with index) O(1) as  does not shift elements because they are linked
 - clear
 
+#### Inheriting Deque interface
+
+Because LinkedList is inheriting the double ended queue it means the class provides methods for removing and adding elements from both sides.
+
 Can be used as queue by using `offer` and `poll` (from implemented Deque class). 
 
 Can also be used as a stack with `push` and `pop` methods
@@ -169,6 +173,36 @@ Maps are for storing unique unordered key-value pairs.
 Does not inherit from the Collections interface. It is considered as a part of the Collection framework as a data structure for structuring your data
 
 Keys cannot be duplicate, but the same cannot be said for values.
+
+```java
+public static void mapDemo() {
+  Map<String, Integer> fruitCalories = new HashMap<>();
+  fruitCalories.put("Apple", 52);
+  fruitCalories.put("Cherry", 50);
+  fruitCalories.putIfAbsent("Almond", 576);
+  fruitCalories.putIfAbsent("Apple", 55); // will not
+
+
+  System.out.println(fruitCalories);
+  System.out.println(fruitCalories.get("Apple"));
+  System.out.println(fruitCalories.containsKey("Cherry"));
+  fruitCalories.remove("Cherry");
+  System.out.println(fruitCalories.containsKey("Cherry"));
+
+  Map immutableFruitCalories = Map.of(
+          "apple", 51,
+          "lemon", 20
+  );
+}
+```
+
+You cannot iterate over a map as the order of insertion is not preserved due to the nature of hashmaps.
+
+LinkedHashMap uses linked list internally so it provides a way for iteration.
+
+### TreeMap (Red-black tree)
+
+Keeps entries sorted by key
 
 ## Complexities
 

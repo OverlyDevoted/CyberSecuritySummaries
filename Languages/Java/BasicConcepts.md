@@ -278,3 +278,56 @@ Anonymous class object instantiation is used to override TimerTask class actions
 Object has to be all-encompassing of everything it needs static is something we create when we don't need using fields or methods that are all connected within the object class.
 Static methods would usually be just methods that receive input and output.
 The whole purpose of classes is to have objects that you would not need to pass the data over and over again, but just call the behaviors
+
+## Exception handling
+
+Some methods can use `throws` keyword with a combination of an error to notify developer what kind of errors the method might throw so that it could be gracefully handled
+
+### Try with resources
+
+Will open the try-catch clause with the resources needed inside the try and will automatically handle closing it
+
+```java
+File file = new File("files/numbers.txt");
+try (Scanner fileReader = new Scanner(file)) {
+  while (fileReader.hasNext()) {
+    System.out.println(fileReader.nextDouble);
+  }
+}
+catch (FileNotFoundException e) {
+  System.out.println(e.message);
+}
+catch (InputMismatchException e) {
+  System.out.println(e.message);
+}
+catch (Exception e) {
+  System.out.println(e.message);
+}
+```
+
+you can have multiple resources inside the try brackets. These resources must implement the AutoCloseable interface.
+
+### Custom Exception
+
+```java
+public class NegativeInputException extends Exception {
+  public NegativeInputException() {
+    this("Input must be greater than or equal to 0");
+  }
+
+  public NegativeInputException(String message) {
+    super(message);
+  }
+}
+```
+ 
+### Rethrowing exceptions
+
+You can throw exceptions that the other methods throw without a try catch. 
+
+```java
+public static void rethrowException() throws IOException {
+  File file = new File("nonexistent.txt");
+  file.createNewFile();
+}
+```
