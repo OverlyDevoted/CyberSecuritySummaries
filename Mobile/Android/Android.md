@@ -43,5 +43,56 @@ It's where all configuration for a view, like it's position, color, text, id, et
 />
 ```
 
+## Labeling
+
+You can label you activities. The app will inherit the name of the main activity if one is set like this:
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:exported="true"
+    android:label="@string/main_activity_name">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
+
+But you can also set the activity name with `setTitle` this will not change the app name.
+
+## Starting new activity
+
+```java
+public void openNewActivity(View v) {
+    Intent intent = new Intent(this, NewActivity.class);
+    startActivity(intent);
+}
+```
+
+## Passing data through intents
+
+The data is passed in a key-value fashion
+
+Passing:
+
+```java
+public void openNewActivity(View v) {
+    Intent intent = new Intent(this, NewActivity.class);
+    putExtra("name", "value");
+    startActivity(intent);
+}
+```
+
+Consuming:
+
+```java
+Intent i = getIntent();
+String message = i.getStringExtra("name");
+```
+
+## Requests
+
 ## Permissions
 
