@@ -30,16 +30,16 @@ Cookie vulnerabilities are a big issue, because the hierarchy rules are often no
  - Secure: the cookie will only be accessible to https pges
  - HTTPOnly: the cookie cannot be read by Javascript
 
- ## `HTTP` - HyperText Transfer Protocol
- It's an application level protocol used to get resources from the `WWW` (World Wide Web)
+## `HTTP` - HyperText Transfer Protocol
+It's an application level protocol used to get resources from the `WWW` (World Wide Web)
 
 *Hypertext* - text that contains links to other resources and text that can be easily interpreted by readers
 
-HTTP communicaions consists of a client and a server. A client makes a request to the server for a resource. The server processes the request and returns requested resources. The default port for http communications is `80`, though it can be done through any port. HTTP requests are used to retrieve website resources. We enter **Fully Qualified Domain Name** as a **Uniform Resource Locator** to reach the desired website.
+HTTP communications consists of a client and a server. A client makes a request to the server for a resource. The server processes the request and returns requested resources. The default port for http communications is `80`, though it can be done through any port. HTTP requests are used to retrieve website resources. We enter **Fully Qualified Domain Name** as a **Uniform Resource Locator** to reach the desired website.
 
 So to make a HTTP request for a resource we enter an **URL**. The structure of an URL looks like this:
 
-![http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status](/hackthebox/images/url.bmp)
+![http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status](./../images/url.bmp)
 
 | Component | Example | Description |
 | - | - | - |
@@ -53,7 +53,7 @@ So to make a HTTP request for a resource we enter an **URL**. The structure of a
 
 ## HTTP flow
 
-![HTTP flow](/hackthebox/Images/httpflow.bmp)
+![HTTP flow](./../Images/httpflow.bmp)
 
 When the users enters a URL into the browser the browser send the request to a <mark>DNS</mark> server to resolve the domain and get the IP address for the server. 
 DNS looks it up and returns it to the client. All domain names need to be resolved into an IP address, otherwise we can't send requests. 
@@ -84,7 +84,7 @@ A HTTPS was invented to prevent that issue. With HTTPS all data is encrypted
 
 ## HTTPS communication flow
 
-![HTTPS flow](/hackthebox/images/httpsflow.bmp)
+![HTTPS flow](./../images/httpsflow.bmp)
 
 This flow is also called a TLS 
 
@@ -107,7 +107,7 @@ To ignore potentially insecure SSL we can use the `-k` tag for the curl. Useful 
 
 ## HTTP Requests
 
-![HTTP Request](/hackthebox/Images/httprequest.bmp)
+![HTTP Request](./../Images/httprequest.bmp)
 
 HTTP request consist of
 
@@ -125,7 +125,7 @@ HTTP 1.X sends requests as clear-text and uses \n to seperate different fields a
 
 ## HTTP Response
 
-![HTTP Response](/hackthebox/Images/httpresponse.bmp)
+![HTTP Response](./../Images/httpresponse.bmp)
 
 1. HTTP version and status
 2. Then the headers, similar to the request
