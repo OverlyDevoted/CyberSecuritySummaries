@@ -8,12 +8,14 @@ What is Spring, Spring Framework and Spring Boot
 
 ## REST APIs in Spring
 
-An REST API is implemented in a three layers application pattern and it contains (as an example checkout the JavaScript/ExpressJS example image.png, also this [rail architecture](https://github.com/rails/rails), they use varied verbatim but describe similar concepts):
+An REST API is implemented in a three layers application pattern and it contains (as an example checkout the ![JavaScript/ExpressJS example image.png](./../../JavaScript/ExpressJS/image.png), also this [rail architecture](https://github.com/rails/rails), they use varied verbatim but describe similar concepts):
 
-- Controller: specifies concrete endpoints. 
+- Controller: specifies concrete endpoints. Responsible for communication with clients.  
 > *Also it says contains logic for responses, but it seems it's a nice segmentation to have them inside service functions, same as in javascript, but adhering to separation of concerns it makes more sense to make service more functional-paradigm-like and not have them handle response but only data processing and informing about the results*
-- Service: business logic
-- Repository: data access logic 
+- Service: business logic. Defines how system works
+- Repository: data access logic.
+
+So all files are structured in the way to facilitate this pattern 
 
 Core features:
 IOC - inversion of control container. Is a tool that helps to streamline the configuration and management of Java objects.
