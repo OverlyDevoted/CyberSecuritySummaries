@@ -70,3 +70,5 @@ There are different security positions:
  - Red teamer - attack the organization and provides feedback from the side of an enemy
  - Security Engineer - designs, monitors and maintains security controls, networks. More of a proactive 
 
+vera crypt
+vm inside vm
