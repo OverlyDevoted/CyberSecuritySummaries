@@ -1,6 +1,7 @@
 ## HTTP requests
 
 basic format of an `http` request is as follows
+
 VERB (GET,POST,DELETE,PUT,..) /resource/locator HTTP/1.1
 Header1: Value1
 Header2: Value2
