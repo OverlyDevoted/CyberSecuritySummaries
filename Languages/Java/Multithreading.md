@@ -42,3 +42,10 @@ All thread are spawned from the main thread and are called **child threads**
 Runtime environment distinguishes between user thread and the daemon thread.
 
 Main is user thread. If not user thread are running the program may terminate if there is no code to run, irrespective of whether any daemon threads are running or not.
+
+Important things to learn to do to manage threads:
+- Creating threads and providing code for a thread to execute
+- Accessing common data and code through synchronization
+- Transitioning between states
+
+setDaemon is for setting a thread to daemon thread. 
