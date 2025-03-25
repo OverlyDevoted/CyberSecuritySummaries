@@ -39,6 +39,8 @@ Less coupling means the system is easier to maintain
 
 **SOLI(Dependency inversion)** - depend on abstractions, rather than implementations
 
+## IoC
+
 If we have a service, a piece of functionality to be used in other places it should be used as an abstraction. We know what functionality the services provides, but we don't know it's implementation. Our consumption of the service should not care for it's dependencies.
 
 Inversion of control - is a design principle, where **custom-written portions of o a computer program** receive **flow of control** from an external source (e.g. framework) 
@@ -86,6 +88,223 @@ Plugin - links classes during configuration rather than compilation. The impleme
 So the core problem is how do we assemble these plugins into an application? and universally they all do it using **Inversion of Control**.
 
 Inversion of control - the standard way of program is that it asks me to input name, the inversion would be that I input it somewhere and some event happens
+
+## Beans
+
+Everything in Spring is a Bean. All services and components are Beans. Beans is a fundamental part of Spring. Beans are objects that are kept in the IoC container, so they are instances of classes and they implement some kind of business logic.
+
+We can configure Bean metadata. We can make Bean reference some Java service, a name, it's scope, once the Bean is defined it is free to use in the application context. 
+
+Creating Beans:
+
+- Add Spring annotations to Java classes (`@Controller`, `@RestController`, `@Service`, `@Repository`, `@Component`) 
+
+We can use Beans inside of Beans. When we create Beans we annotate and implement constructors with dependents all the rest is managed by Spring.
+
+FatJar is having all dependencies compressed into one jar file
+
+## Scopes
+
+Scopes control how IoC container manages Beans in different places of the application
+
+## Singleton scope
+
+Only one shared instance of a singleton bean is managed, and all requests for beans with an id or ids matching that bean definition result in one specific beans instance being returned by Spring container  
+
+As a rule of thumb, use Singleton scope for stateless beans
+
+`@Service`
+
+## Prototype scope
+
+Bean with prototype scope results in the creation of a new bean instance every time a request for that specific bean is made. That is, the bean injected into another bean or you request it through a getBean() method call on the container
+
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)  
+
+## More scopes
+
+Request - this scope is when bean instance live the lifetime of http request on server (on the same thread, to be precise)
+
+Session - used for keeping session state
+
+## Logbok
+
+Provides helper annotations to reduce boilerplate
+
+- `@Builder` lets you automatically produce the code required to have your class be instantiable with code such as: 
+```java
+
+    Person.builder()
+    .name("Adam Savage")
+    .city("San Francisco")
+    .job("Mythbusters")
+    .job("Unchained Reaction")
+    .build();
+```
+Builders are a way to create class instances?
+
+- `@Data`: @Data is a convenient shortcut annotation that bundles the features of @ToString, @EqualsAndHashCode, @Getter / @Setter and @RequiredArgsConstructor together: In other words, @Data generates all the boilerplate that is normally associated with simple POJOs (Plain Old Java Objects) and beans: getters for all fields, setters for all non-final fields, and appropriate toString, equals and hashCode implementations that involve the fields of the class, and a constructor that initializes all final fields, as well as all non-final fields with no initializer that have been marked with @NonNull, in order to ensure the field is never null. 
+
+## DTO
+
+Data transfer objects are objects are used to communicate between systems. DTO classes describe the shape (properties of the said DTO)
+
+## Basic spring layers relationships
+
+**Controller** defines APIs and calls the **Service** for how to get data. **DTOs** are for defining the return types or just how to pass some values around.
+
+Services call repositories to get data from databases
+
+## Spring configuration
+
+Is useful when overriding a third-party class
+
+```java
+@Configuration
+public class AppConfiguration {
+  @Bean
+  public ObjectMapper objectMapper() {
+    ObjectMapper mapper = new ObjectMapper();
+    mapper.registerModule(new JavaTimeModule());
+    mapper.configure(DeserializationModule(FAIL_ON_UNKNOWN_PROPERTIES, true));
+    return mapper;
+  }
+}
+```
+
+## Properties
+
+Externalize configuration properties. They are used to set up application for working in different environments. Usually property files, YAML files, env variables, and command-line arguments are used for configuring.
+
+Properties are considered in the following order:
+- Command line arguments
+- Java System Properties (System.getProperties())
+- OS environment properties
+- Application properties outside of the packaged JAR (application.properties and YAM variants)
+- Application properties packaged inside your application jar (application.properties and YAML variants)
+
+Property values are injected with `@Value` and by referencing their identifier
+
+## Exceptions
+
+Exceptions are events in your code that indicate that something has gone not according to plan. Exception types:
+
+- Checked: are runtime errors
+- Unchecked: those that happen out of your control
+
+For unchecked we can create handlers. We annotate classes with `@ControllerAdvice` this tells Spring how we would like to handle some exceptions and behavior
+
+```java
+@ControllerAdvice
+public class FeedbackAppErrorHandler {
+  @ExceptionHandler(Exception.class)
+  @ResponseBody
+  public ErrorDto manageException(HttpServletResponse response, Exception ex) {
+    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    log.error("Generic exception handler caught unhandled error", ex);
+    return ErrorDto.builder()
+      .message("unknown problem occurred, please contact support")
+      .timestamp(OffsetDateTime.now())
+      .build();
+  }
+}
+```
+
+If we did not have this, Spring would respond with a generic spring response of "Internal server error"
+
+## Validation
+
+- *Fail as fast as possible* when provided with incorrect input
+- Define rules for what data is acceptable and what is not
+- No need to do that in every method - only for boundaries
+- In case of RESTApis, appropriate boundary is the controller
+
+Bean validations comes with a lot of out-of-the box validators:
+@NotEmpty, @NotBlank, @Length(min=1, max=10), @Email, etc.
+
+### Custom Bean validations
+
+Custom annotation class is used for parametrizing the validation
+
+Actual validation logic is implemented in a custom validation class
+
+Defines validation parameters and specifies used validator:
+
+```java
+@Constraint(validatedBy = {QuizIdValidator.class}) // specifies validator class 
+@Target({ElementType.FIELD, ElementType.PARAMETER}) // defines that this annotation will be applied to a field or a parameter of a method
+@Retention(value = retentionPolicy.RUNTIME)
+public @interface QuizId {
+  String message() default "Non-existing quiz ID";
+  Class<?>[] groups() default {};
+  Class<? extends Payload[]> payload() default {};
+}
+```
+
+```java
+@Component
+public class QuizIdValidator implements ConstraintValidator<QuizId, UUID> {
+  @Autowired
+  QuizRepository quizRepository;
+
+  @Override
+  public boolean isValid(UUID quizId, ConstraintValidatorContext context) {
+    return !quizRepository.getById(quizId).isEmpty();
+  }
+
+  @Override
+  public void initialize(QuizId constraintAnnotation) {
+    ConstraintValidator.super.initialize(constraintAnnotation);
+  }
+}
+```
+
+## Groups
+
+Sometimes same object needs to be validated using different rules depending on the situation
+
+```java
+public class Quiz {
+  private Long id;
+
+  @NotBlank(groups = BasicInfo.class)
+  private String code;
+
+  @NotBlank(groups = AdvancedInfo.class)
+  private String title;
+}
+```
+
+```java
+@PostMapping("/quiz")
+public ResponseEntity<Quiz> saveQuiz(@RequestBody @Validated(AdvancedInfo.class) Quiz quiz) {
+  return ResponseEntity.ok(quizService.addQuiz(quiz));
+}
+
+@PostMapping("/quiz")
+public ResponseEntity<Quiz> saveQuiz(@RequestBody @Validated(BasicInfo.class) Quiz quiz) {
+  return ResponseEntity.ok(quizService.addQuiz(quiz));
+}
+```
+
+## Controller parameter validation
+
+Controller has to be annotated with `@Validated` and also the parameter then following that add various validation annotations
+
+```java
+@RestController
+@Validated
+public class QuizController {
+  @GetMapping("/searchByTitle")
+  public ResponseEntity<Quiz> getQuiz(@Validated @NotNull @Length(min=3)
+  @RequestParam("phrase") String phrase) {
+    return quizService.getByTitle(phrase);
+  }
+}
+```
+
+So these validators allows us to implement any validation logic we want. In this case a repository method is called to check if a record with a specified ID exists in the database. Generally it is not a good practice and it would be considered having business logic inside of a validator, but having such validations outside of Service logic is beneficial in the long run as it allows reusability and encapsulate validation logic. 
 
 IoC - inversion of control container. Is a tool that helps to streamline the configuration and management of Java objects.
 
