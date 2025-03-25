@@ -2,5 +2,9 @@
     "cSpell.words": [
         "uncomfortability",
         "unintangible"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#e0ac00",
+        "titleBar.activeForeground": "#000000"
+    }
 }
