@@ -1,0 +1,1 @@
+Indexes good for search, cuz b tree balancing insertion. Index bloat. Indexes can be heavy. Then partitioning might be taking over. Del uuid 7 kartos data gali padet sortinti
