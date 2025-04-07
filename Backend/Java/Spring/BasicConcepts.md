@@ -188,6 +188,10 @@ Property values are injected with `@Value` and by referencing their identifier
 
 ## Exceptions
 
+In general, Java has a a `Throwable` class and it's a parent class for all types of errors.
+
+It has two main subtypes and those are: `Error` and `Exception`. `Error` thrown errors are usually errors that cannot be handled for numerous reasons. E.g. no RAM, burning pc that causing internal failure, etc. 
+
 Exceptions are events in your code that indicate that something has gone not according to plan. Exception types:
 
 - Checked: are runtime errors
@@ -303,6 +307,17 @@ public class QuizController {
   }
 }
 ```
+
+## Entities
+
+Entities represent persistence layer objects. They only exist inside the repository and service layer and are objects returned and passed to databases.
+
+The presentation layer (controllers) would get and send DTOs but when speaking to services, you might pass entities. One way to convert from DTO to Entity is by building custom object mappers or object builders. 
+
+DTOs are POJOs. While Entities are persistence layers representations.
+
+This is done to decouple presentation layer from service/persistence layer.
+-----------
 
 So these validators allows us to implement any validation logic we want. In this case a repository method is called to check if a record with a specified ID exists in the database. Generally it is not a good practice and it would be considered having business logic inside of a validator, but having such validations outside of Service logic is beneficial in the long run as it allows reusability and encapsulate validation logic. 
 
