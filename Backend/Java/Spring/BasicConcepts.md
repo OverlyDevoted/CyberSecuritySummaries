@@ -308,6 +308,39 @@ public class QuizController {
 }
 ```
 
+## Configuration properties
+
+You can create a class that will autowire application.properties variables to class variables
+
+In java:
+
+```java
+@Configuration // since in the example it was a dependency that had to be injected
+@ConfigurationProperties(prefix = "pizza")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class PizzaConfig {
+  String sauce;
+  String topping;
+  String crust;
+}
+```
+
+In application.properties:
+
+```properties
+pizza.sauce=bbq
+pizza.topping=pepperoni
+pizza.crust=stuffed crust
+```
+
+Or you can use environment variables
+
+Environment variables have to be defined upper-snake-case
+
+## Controlling IoC container
+
 ## Entities
 
 Entities represent persistence layer objects. They only exist inside the repository and service layer and are objects returned and passed to databases.
