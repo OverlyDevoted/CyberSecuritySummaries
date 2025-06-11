@@ -168,7 +168,7 @@ for (let i = 0; i < 10000; i++) {
 }
 ```
 
-Now when would `"Hello"` get outputted? Before the first `"Bye"`? After the first `"Bye"`? Somewhere in the middle? There's a rule, a check, that keeps on checking when the callback queue can get popped and it's called the callback loop. The rule goes like this: when a the callback stack is empty and the thread of execution at the global execution context has nothing else to execute, pop the callback queue into the callback stack. So, bye would get printed out after ALL the `"Bye"` logs. That is called the **event loop**
+Now when would `"Hello"` get outputted? Before the first `"Bye"`? After the first `"Bye"`? Somewhere in the middle? There's a rule, a check, that keeps on checking when the callback queue can get popped and it's called the callback loop. The rule goes like this: when a the callback stack is empty and the thread of execution at the global execution context has nothing else to execute, pop the callback queue into the callback stack. So, `"Hello"` would get printed out after ALL the `"Bye"` logs. That is called the **event loop**
 
 Now imagine we are fetching some data from somewhere the internet. Currently in our model we will only have the data available inside our function, within it's execution context and nowhere else. That's not ideal and that has a name - **callback hell**.
 

@@ -38,10 +38,6 @@ public class Category {
 }
 ```
 
-```java
-
-```
-
 ### Cascading
 
 It is important to consider column lifecycle and how important it is to related entities. If entities have independent lifecycles they should not cascade.

@@ -1,0 +1,12 @@
+execution context - its a context, describes each line of the code. Each function creates its own execution context
+for loop does not get its own execution context, rather, a protected namespace. Same as if switch and so on
+
+global execution context - its the main body and javascript engine starts off by running global()
+thread of execution - its almost a pointer that tells what line is being processed and it goes line-by-line in the execution context
+local memory - this is where execution contexts save their variables
+call stack. Global is on top and the everything gets stacked on it, function on top is executed
+
+higher order function - its a function that is passed as an argument. 
+HOC
+
+look at prototype

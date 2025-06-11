@@ -55,3 +55,163 @@ red dog, red cat, red bird, green dog, green cat and so on.
 ```sql
 SELECT r.title, r.body, rp.url FROM recipes_photos rp CROSS JOIN recipes r;
 ```
+
+![alt text](image.png)
+
+A JOIN clause is used in SQL to combine records from two or more tables in a database, using a related column (usually a foreign key).
+
+## Types of Joins
+
+1. INNER JOIN
+
+    Returns only the rows with matching values in both tables.
+
+    Most commonly used join.
+
+```sql
+SELECT *
+FROM orders
+INNER JOIN customers
+ON orders.customer_id = customers.id;
+```
+
+Only customers who placed orders will appear.
+
+2. LEFT JOIN (or LEFT OUTER JOIN)
+
+    Returns all rows from the left table, and the matched rows from the right table.
+
+    If no match, returns NULL for right table's columns.
+
+```sql
+SELECT *
+FROM customers
+LEFT JOIN orders
+ON customers.id = orders.customer_id;
+```
+
+All customers, even those without orders.
+
+3. RIGHT JOIN (or RIGHT OUTER JOIN)
+
+    Returns all rows from the right table, and the matched rows from the left table.
+
+```sql
+SELECT *
+FROM orders
+RIGHT JOIN customers
+ON orders.customer_id = customers.id;
+```
+➡️ All orders, showing customer data where available.
+4. FULL JOIN (or FULL OUTER JOIN)
+
+    Returns all rows from both tables.
+
+    Rows without a match in either table get NULL for the missing side.
+
+```sql
+SELECT *
+FROM customers
+FULL OUTER JOIN orders
+ON customers.id = orders.customer_id;
+```
+
+➡️ All customers and all orders, with matches shown and non-matches filled with NULL.
+
+5. CROSS JOIN
+
+    Returns the Cartesian product of both tables.
+
+    Every row in the first table is matched with every row in the second.
+
+```sql
+SELECT *
+FROM products
+CROSS JOIN colors;
+```
+
+➡️ Useful for combinations (e.g., all product-color pairs).
+
+6. SELF JOIN
+
+    A table joined to itself, useful for hierarchical or recursive relationships.
+
+```sql
+SELECT A.name AS Employee, B.name AS Manager
+FROM employees A
+LEFT JOIN employees B
+ON A.manager_id = B.id;
+```
+
+➡️ Employees with their managers.
+
+📌 Join Conditions
+
+Joins usually use equality on keys:
+
+ON table1.key = table2.key
+
+But you can also use inequalities or other operators:
+
+ON employees.salary > managers.salary
+
+Visual Summary (Text Form)
+
+INNER JOIN:         A ∩ B
+LEFT JOIN:          A ⟕ B
+RIGHT JOIN:         A ⟖ B
+FULL OUTER JOIN:    A ⟗ B
+CROSS JOIN:         A × B
+
+Tips
+
+    Always alias tables (e.g., a, b) for readability in complex joins.
+
+    Use USING(column) instead of ON if both tables share the same column name.
+
+    Be cautious with CROSS JOIN—it can produce huge results!
+
+To filter records, not to get extra columns or rows, here are better options:
+
+1. Use WHERE EXISTS
+
+This is ideal when you want to filter rows in one table based on the existence of related rows in another table.
+
+```sql
+SELECT *
+FROM customers c
+WHERE EXISTS (
+  SELECT 1
+  FROM orders o
+  WHERE o.customer_id = c.id
+);
+```
+
+➡️ Returns only customers who have at least one order — no duplication, and no join output.
+
+2. Use WHERE IN
+
+Another option, often simpler but can be less efficient with large datasets.
+
+```sql
+SELECT *
+FROM customers
+WHERE id IN (
+  SELECT customer_id
+  FROM orders
+);
+```
+
+➡️ Same logic as EXISTS, but less flexible for complex conditions.
+
+3. Use INTERSECT (if supported)
+
+This returns only the common rows between two queries.
+
+```sql
+SELECT id FROM customers
+INTERSECT
+SELECT customer_id FROM orders;
+```
+
+➡️ Less common but clean if you're just comparing sets.
