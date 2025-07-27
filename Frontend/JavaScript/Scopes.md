@@ -1,0 +1,3 @@
+- Block scope: variables declared inside curly braces are only accessible inside the **scope** of curly braces
+- Function scope: variables declared inside the function cannot be accessed outside the function
+- Global scope: globally scoped variables can be accessed inside block and function scopes
