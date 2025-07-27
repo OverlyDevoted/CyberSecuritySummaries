@@ -45,3 +45,7 @@ This file contains packages both for use in NodeJS and in browsers
 ## js-cookie
 
 [API for handling cookies](https://www.npmjs.com/package/js-cookie)
+
+## semver
+
+[Utils for handling semantic versions](https://github.com/g-plane/tiny-package-manager.git). Also lookup documentation for understanding various symbols included in semantic version strings.

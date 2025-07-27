@@ -30,7 +30,7 @@ Manifest information contains many details about a given package. It contains ev
 
 Then we get the specific version manifest per given constraint or the latest
 
-`topLevel` is used to flatten package tree to avoid duplication 
+`topLevel` is used to flatten package tree to avoid duplication
 
 `unsatisfied` when there are dependency conflicts, this may be used
 
@@ -41,3 +41,24 @@ Is checked at dependencies of dependencies and not top level dependencies
 Dependency is simply checked by iterating through a stack of dependencies with a dependency and checking their dependencies. If there's a duplicate dependency, their version is checked for conflicts.
 
 So dependency conflict is when there is a mismatch between dependency versions.
+
+### Circular dependencies
+
+If a package is in the stack and it satisfies the semantic version it means its a circular dependency
+
+## Tricks learned
+
+### Returning and assigning
+
+```js
+function foo() {
+    let b = {count: 0};
+    return () => {
+        return (b.count = b.count + 1);
+    }
+}
+```
+
+### Parallelize array execution
+
+Wrap an array of promises in `new Promise.all`. With this it is possible to do unified error handling and `await` for all the promises. 
