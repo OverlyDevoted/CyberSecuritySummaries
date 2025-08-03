@@ -41,3 +41,20 @@ Is checked at dependencies of dependencies and not top level dependencies
 Dependency is simply checked by iterating through a stack of dependencies with a dependency and checking their dependencies. If there's a duplicate dependency, their version is checked for conflicts.
 
 So dependency conflict is when there is a mismatch between dependency versions.
+
+### Circular dependency detection
+
+Circular dependency is when there is a package in the dependency stack and it satisfies the semantic version
+
+### Yarn vs NPM
+
+Main differences
+
+NPM:
+- Relies on global package cache where the downloaded packages are stored. This cache is shared across projects.
+
+Yarn
+- Maintains per-project cache which reduces redundant downloads. This offers increased reliability and ensures consistent package versions 
+- Determenistic version resolution. Ensures that package versions are consistent across environments
+- Parallel and offline installations. Parallel installation means simultaneously multiple installations are happening, while offline installation means that if package is inside local cache, it will install it from there.
+- Workspaces and monorepo support. Automatically link dependencies between workspaces when they refer to each other. If one package (project) in the repo depends on another, Yarn links them locally instead of downloading from the npm registry. Meaning if two projects depend on the same package the package would be installed in the root of the two projects and then linked to use the same package. 
